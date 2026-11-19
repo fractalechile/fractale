@@ -133,3 +133,10 @@ y complétalo. Ver `INSCRIPCIONES.md` para el detalle del módulo.
 
 **Ojo con el despliegue:** GitHub Pages solo sirve archivos estáticos, así que el
 sitio ya no puede publicarse ahí. Hay que desplegarlo en Vercel.
+
+
+## Donde vive el proyecto
+
+Repositorio: github.com/fractalechile/fractale
+Despliegue: Vercel, cuenta de Fractale (contacto@fractalechile.com)
+Dominio: https://fractalechile.com
