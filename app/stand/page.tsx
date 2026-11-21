@@ -4,6 +4,7 @@ import Barra from "../barra";
 
 const EVENTO_SLUG = "giro-del-lago-2026";
 const DISTANCIAS = ["163 km", "80 km", "Acompañante"];
+const SEXOS = ["Femenino", "Masculino", "Otro", "Prefiero no decir"];
 const SUPLEMENTOS = [
   { valor: "Creatina", nombre: "Creatina", detalle: "Base" },
   { valor: "Pre Workout", nombre: "Pre Workout", detalle: "" },
@@ -29,6 +30,9 @@ export default function Stand() {
       nombre: f.get("nombre"),
       email: f.get("email"),
       telefono: f.get("telefono"),
+      sexo: f.get("sexo"),
+      edad: Number(f.get("edad")),
+      ciudad: f.get("ciudad"),
       distancia: f.get("distancia") ?? "",
       uso_presoterapia: f.get("uso_presoterapia") === "on",
       uso_plataforma_salto: f.get("uso_plataforma_salto") === "on",
@@ -90,6 +94,15 @@ export default function Stand() {
                 <input name="email" type="email" required autoComplete="email" placeholder="correo@ejemplo.com" /></label>
               <label className="campo"><span>Teléfono</span>
                 <input name="telefono" type="tel" autoComplete="tel" placeholder="+56 9 1234 5678" /></label>
+              <label className="campo"><span>Sexo <i className="req">*</i></span>
+                <select name="sexo" required defaultValue="">
+                  <option value="" disabled>Selecciona…</option>
+                  {SEXOS.map((s) => <option key={s}>{s}</option>)}
+                </select></label>
+              <label className="campo"><span>Edad <i className="req">*</i></span>
+                <input name="edad" type="number" inputMode="numeric" min={5} max={100} required placeholder="35" /></label>
+              <label className="campo ancho"><span>¿De qué ciudad vienes? <i className="req">*</i></span>
+                <input name="ciudad" required autoComplete="address-level2" placeholder="Puerto Varas" /></label>
             </div>
           </fieldset>
 
