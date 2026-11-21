@@ -4,11 +4,19 @@ import Barra from "../barra";
 
 const EVENTO_SLUG = "giro-del-lago-2026";
 const DISTANCIAS = ["163 km", "80 km", "Acompañante"];
+const SUPLEMENTOS = [
+  { valor: "Creatina", nombre: "Creatina", detalle: "Base" },
+  { valor: "Pre Workout", nombre: "Pre Workout", detalle: "" },
+  { valor: "Rezet", nombre: "Rezet", detalle: "dormir" },
+  { valor: "Essential", nombre: "Essential", detalle: "multivitamínico" },
+  { valor: "Focus", nombre: "Focus", detalle: "" },
+];
 
 export default function Stand() {
   const [estado, setEstado] = useState<"idle" | "enviando" | "ok" | "error">("idle");
   const [msg, setMsg] = useState("");
   const [salto, setSalto] = useState(false);
+  const [suple, setSuple] = useState(false);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -26,7 +34,7 @@ export default function Stand() {
       uso_plataforma_salto: f.get("uso_plataforma_salto") === "on",
       salto_cm: cm ? Number(cm) : null,
       compro_suplementos: f.get("compro_suplementos") === "on",
-      interes_plan: f.get("interes_plan") === "on",
+      suplementos: f.getAll("suplementos").map(String),
       acepta_terminos: f.get("acepta_terminos") === "on",
       acepta_comunicaciones: f.get("acepta_comunicaciones") === "on",
       website: f.get("website"),
@@ -41,6 +49,7 @@ export default function Stand() {
       setEstado("ok");
       formulario.reset();
       setSalto(false);
+      setSuple(false);
     } else {
       setEstado("error");
       setMsg(data.error ?? "Ocurrió un error.");
@@ -108,17 +117,20 @@ export default function Stand() {
                 <input name="salto_cm" inputMode="decimal" placeholder="32,5" /></label>
             )}
             <label className="visto-bueno">
-              <input type="checkbox" name="compro_suplementos" />
+              <input type="checkbox" name="compro_suplementos" onChange={(e) => setSuple(e.target.checked)} />
               <span><b>Compré suplementos</b> · ForceHuman</span>
             </label>
-          </fieldset>
-
-          <fieldset className="grupo">
-            <legend>¿Te interesa?</legend>
-            <label className="visto-bueno">
-              <input type="checkbox" name="interes_plan" />
-              <span>Quiero que Fractale me contacte por un plan de recovery o entrenamiento.</span>
-            </label>
+            {suple && (
+              <div className="suple">
+                <p>¿Cuáles? Puedes marcar varios.</p>
+                <div className="pildoras">
+                  {SUPLEMENTOS.map((s) => (
+                    <label key={s.valor}><input type="checkbox" name="suplementos" value={s.valor} />
+                      <span>{s.nombre}{s.detalle && <small> · {s.detalle}</small>}</span></label>
+                  ))}
+                </div>
+              </div>
+            )}
           </fieldset>
 
           {/* Honeypot: los humanos no lo ven */}

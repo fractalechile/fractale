@@ -16,7 +16,7 @@ create table if not exists visitas_stand (
   uso_plataforma_salto boolean not null default false,
   salto_cm numeric(5,1),             -- altura medida con Chronojump
   compro_suplementos boolean not null default false,
-  interes_plan boolean not null default false,
+  suplementos text[] not null default '{}',  -- ForceHuman: Creatina | Pre Workout | Rezet | Essential | Focus
   acepta_terminos boolean not null,
   acepta_comunicaciones boolean not null default false,
   created_at timestamptz not null default now()

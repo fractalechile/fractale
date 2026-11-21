@@ -379,6 +379,9 @@ footer .nota{padding-bottom:16px;border-bottom:1px solid var(--line);margin:0}
 .pildoras input:checked + span{background:var(--blue);border-color:var(--blue);color:#fff}
 .pildoras input:focus-visible + span{outline:2px solid var(--blue);outline-offset:2px}
 .salto-cm{max-width:220px;margin:-4px 0 18px 31px}
+.suple{margin:-4px 0 18px 31px}
+.suple p{font-size:13px;color:var(--ink-2);margin:0 0 10px}
+.pildoras small{font-size:13px;opacity:.75}
 
 .aviso{margin:0 0 14px;padding:13px 15px;border-radius:12px;font-size:15px;
   background:#fff1f0;color:#b3261e;border:1px solid #f3c6c2}

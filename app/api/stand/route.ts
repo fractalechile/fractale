@@ -12,7 +12,7 @@ const schema = z.object({
   uso_plataforma_salto: z.boolean(),
   salto_cm: z.number().min(0).max(150).nullable(),
   compro_suplementos: z.boolean(),
-  interes_plan: z.boolean(),
+  suplementos: z.array(z.enum(["Creatina", "Pre Workout", "Rezet", "Essential", "Focus"])).max(5).default([]),
   acepta_terminos: z.literal(true),
   acepta_comunicaciones: z.boolean(),
   website: z.string().optional(), // honeypot anti-bots
@@ -41,7 +41,7 @@ export async function POST(req: Request) {
     uso_plataforma_salto: d.uso_plataforma_salto,
     salto_cm: d.uso_plataforma_salto ? d.salto_cm : null,
     compro_suplementos: d.compro_suplementos,
-    interes_plan: d.interes_plan,
+    suplementos: d.compro_suplementos ? d.suplementos : [],
     acepta_terminos: true,
     acepta_comunicaciones: d.acepta_comunicaciones,
   });
