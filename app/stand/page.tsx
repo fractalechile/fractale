@@ -9,7 +9,7 @@ const SUPLEMENTOS = [
   { valor: "Pre Workout", nombre: "Pre Workout", detalle: "" },
   { valor: "Rezet", nombre: "Rezet", detalle: "dormir" },
   { valor: "Essential", nombre: "Essential", detalle: "multivitamínico" },
-  { valor: "Focus", nombre: "Focus", detalle: "" },
+  { valor: "Focus", nombre: "Focus", detalle: "concentración" },
 ];
 
 export default function Stand() {
