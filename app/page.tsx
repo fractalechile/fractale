@@ -59,7 +59,8 @@ export default function Portada() {
           <div className="giro-lago" role="img" aria-label="Volcán Osorno sobre el lago Llanquihue"></div>
           <div className="giro-ciclistas" aria-hidden="true"></div>
           <div className="giro-txt">
-            <span className="giro-tag"><i aria-hidden="true"></i>En vivo · Giro del Lago · Playa Venado, Puerto Varas</span>
+            <p className="giro-lockup">FRACTALE <span aria-hidden="true">×</span><span className="sr-only">por</span> GIRO DEL LAGO</p>
+            <span className="giro-tag"><i aria-hidden="true"></i>Domingo 22 de noviembre 2026 · Playa Venado, Puerto Varas</span>
             <h1>163 km<br />alrededor del lago.<br /><span>Ahora, recupérate.</span></h1>
             <p>Fractale Recovery está en la meta: presoterapia, plataforma de salto y suplementos para tu vuelta a casa.</p>
             <div className="giro-ctas">
