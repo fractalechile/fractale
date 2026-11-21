@@ -1,0 +1,54 @@
+import { NextResponse } from "next/server";
+import { z } from "zod";
+import { supabaseAdmin } from "@/lib/supabase-admin";
+
+const schema = z.object({
+  evento_slug: z.string().min(1),
+  nombre: z.string().trim().min(3).max(120),
+  email: z.string().trim().toLowerCase().email(),
+  telefono: z.string().trim().max(20).optional().or(z.literal("")),
+  distancia: z.enum(["163 km", "80 km", "Acompañante"]).optional().or(z.literal("")),
+  uso_presoterapia: z.boolean(),
+  uso_plataforma_salto: z.boolean(),
+  salto_cm: z.number().min(0).max(150).nullable(),
+  compro_suplementos: z.boolean(),
+  interes_plan: z.boolean(),
+  acepta_terminos: z.literal(true),
+  acepta_comunicaciones: z.boolean(),
+  website: z.string().optional(), // honeypot anti-bots
+});
+
+export async function POST(req: Request) {
+  const json = await req.json().catch(() => null);
+  const parsed = schema.safeParse(json);
+  if (!parsed.success) {
+    return NextResponse.json({ error: "Revisa los datos del formulario." }, { status: 400 });
+  }
+  const d = parsed.data;
+  if (d.website) return NextResponse.json({ ok: true }); // bot: fingimos éxito
+
+  const { data: evento } = await supabaseAdmin
+    .from("eventos").select("id").eq("slug", d.evento_slug).eq("activo", true).single();
+  if (!evento) return NextResponse.json({ error: "Evento no disponible." }, { status: 404 });
+
+  const { error } = await supabaseAdmin.from("visitas_stand").insert({
+    evento_id: evento.id,
+    nombre: d.nombre,
+    email: d.email,
+    telefono: d.telefono || null,
+    distancia: d.distancia || null,
+    uso_presoterapia: d.uso_presoterapia,
+    uso_plataforma_salto: d.uso_plataforma_salto,
+    salto_cm: d.uso_plataforma_salto ? d.salto_cm : null,
+    compro_suplementos: d.compro_suplementos,
+    interes_plan: d.interes_plan,
+    acepta_terminos: true,
+    acepta_comunicaciones: d.acepta_comunicaciones,
+  });
+
+  if (error) {
+    console.error(error);
+    return NextResponse.json({ error: "No pudimos registrar tu visita." }, { status: 500 });
+  }
+  return NextResponse.json({ ok: true });
+}

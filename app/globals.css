@@ -106,6 +106,69 @@ button{font:inherit;color:inherit}
 }
 .foto-pie{font-size:12px;color:var(--ink-3);margin-top:12px}
 
+/* ---------- portada Giro del Lago ---------- */
+.giro{position:relative;height:calc(100svh - 48px);min-height:600px;padding:0;overflow:hidden;color:#fff;
+  display:flex;align-items:flex-end;background:#0b1a24}
+.giro-lago{position:absolute;inset:-4%;
+  background:url("https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Volcan_Osorno%2C_Lago_Llanquihue%2C_Puerto_Varas.JPG/1920px-Volcan_Osorno%2C_Lago_Llanquihue%2C_Puerto_Varas.JPG") center 40%/cover;
+  animation:giro-zoom 18s ease-out forwards}
+@keyframes giro-zoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+.giro-ciclistas{position:absolute;left:0;right:0;bottom:0;height:62%;z-index:1;
+  background:url("https://images.unsplash.com/photo-1658736415101-2c3cd342d78d?q=80&w=1920&auto=format&fit=crop") center 35%/cover;
+  filter:blur(3px) saturate(.9);opacity:.55;mix-blend-mode:screen;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 45%,#000 75%,transparent 100%);
+  mask-image:linear-gradient(180deg,transparent 0%,#000 45%,#000 75%,transparent 100%);
+  animation:giro-entra 2.4s .4s both ease-out}
+@keyframes giro-entra{from{opacity:0;transform:translateX(-6%)}to{opacity:.55;transform:none}}
+.giro::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.15) 55%,rgba(0,0,0,.78) 100%)}
+.giro-txt{position:relative;z-index:2;padding:0 6vw 9vh;max-width:1100px;animation:giro-sube 1.2s .3s both cubic-bezier(.2,.8,.2,1)}
+@keyframes giro-sube{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+.giro-tag{display:inline-flex;gap:10px;align-items:center;font-size:13px;font-weight:500;
+  background:rgba(255,255,255,.16);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.3);padding:7px 14px;border-radius:99px;margin-bottom:22px}
+.giro-tag i{width:8px;height:8px;border-radius:50%;background:#30d158;animation:giro-pulso 1.8s infinite}
+@keyframes giro-pulso{0%{box-shadow:0 0 0 0 rgba(48,209,88,.7)}70%,100%{box-shadow:0 0 0 10px rgba(48,209,88,0)}}
+.giro h1{font-size:clamp(48px,9vw,124px);line-height:.95;letter-spacing:-.035em;font-weight:700;margin:0}
+.giro h1 span{color:#7fd4ff}
+.giro-txt p{font-size:clamp(18px,2vw,24px);max-width:34ch;margin:22px 0 30px;color:rgba(255,255,255,.88);line-height:1.35}
+.giro-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.giro-btn-line{border-color:rgba(255,255,255,.6);color:#fff}
+.giro-btn-line:hover{background:#fff;color:#000}
+.giro-fecha{position:absolute;right:6vw;bottom:9vh;z-index:2;text-align:right;font-size:13px;color:rgba(255,255,255,.8)}
+.giro-fecha b{display:block;font-size:64px;line-height:1;color:#fff;letter-spacing:-.04em}
+.giro-cinta{background:#000;color:#fff;overflow:hidden;white-space:nowrap;font-size:15px;padding:14px 0;letter-spacing:.08em}
+.giro-cinta > div{display:inline-block;animation:giro-corre 30s linear infinite}
+@keyframes giro-corre{to{transform:translateX(-50%)}}
+.giro-cinta span span{margin:0 28px;opacity:.85}
+.recovery{background:#000;color:#f5f5f7}
+.recovery .lead{color:#a1a1a6;max-width:40ch;margin-bottom:48px}
+.estaciones{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.estacion{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:3/4;display:flex;align-items:flex-end;padding:26px;color:#fff}
+.estacion .fondo{position:absolute;inset:0;display:flex;justify-content:center;align-items:flex-start;padding-top:22%;
+  transition:transform .8s cubic-bezier(.2,.8,.2,1);background-size:cover;background-position:center}
+.estacion:hover .fondo{transform:scale(1.06)}
+.estacion .fondo b{font-size:clamp(36px,4.4vw,60px);letter-spacing:-.04em;color:rgba(255,255,255,.14);transform:rotate(-8deg)}
+.estacion::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.85))}
+.estacion .t{position:relative;z-index:2}
+.estacion small{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#7fd4ff}
+.estacion h3{font-size:30px;margin:6px 0;letter-spacing:-.02em}
+.estacion p{margin:0;color:rgba(255,255,255,.8);font-size:15px;line-height:1.4}
+/* reemplazar estos fondos por las fotos del stand: background-image:url("/assets/fotos/...") */
+.e1 .fondo{background-image:radial-gradient(120% 80% at 30% 20%,#1f4e6b,#0a1620 70%)}
+.e2 .fondo{background-image:radial-gradient(120% 80% at 70% 20%,#3a2a6b,#0f0b1f 70%)}
+.e3 .fondo{background-image:radial-gradient(120% 80% at 50% 10%,#6b2a1f,#1f0c09 70%)}
+.giro-cred{font-size:11px;color:#86868b;margin:40px 0 0;text-align:center}
+@media(max-width:734px){
+  .estaciones{grid-template-columns:1fr}
+  .estacion{aspect-ratio:4/3}
+  .giro-fecha{display:none}
+  .giro-lago{background-position:74% 30%}
+}
+@media(prefers-reduced-motion:reduce){
+  .giro-lago,.giro-ciclistas,.giro-txt,.giro-cinta > div,.giro-tag i{animation:none}
+}
+
 /* ---------- secciones ---------- */
 section{padding:110px 0}
 @media(max-width:734px){section{padding:72px 0}}
@@ -306,6 +369,16 @@ footer .nota{padding-bottom:16px;border-bottom:1px solid var(--line);margin:0}
 .visto-bueno input{width:20px;height:20px;margin:1px 0 0;flex:none;accent-color:var(--blue)}
 .visto-bueno span{font-size:14px;line-height:1.45;color:var(--ink-2)}
 .visto-bueno a{color:var(--link)}
+.visto-bueno b{color:var(--ink);font-weight:600}
+/* opciones tipo píldora (formulario del stand) */
+.pildoras{display:flex;gap:10px;flex-wrap:wrap}
+.pildoras label{position:relative;cursor:pointer}
+.pildoras input{position:absolute;opacity:0;pointer-events:none}
+.pildoras span{display:inline-block;min-height:44px;padding:11px 20px;border-radius:980px;border:1px solid var(--line);
+  font-size:16px;transition:background .2s,border-color .2s,color .2s}
+.pildoras input:checked + span{background:var(--blue);border-color:var(--blue);color:#fff}
+.pildoras input:focus-visible + span{outline:2px solid var(--blue);outline-offset:2px}
+.salto-cm{max-width:220px;margin:-4px 0 18px 31px}
 
 .aviso{margin:0 0 14px;padding:13px 15px;border-radius:12px;font-size:15px;
   background:#fff1f0;color:#b3261e;border:1px solid #f3c6c2}

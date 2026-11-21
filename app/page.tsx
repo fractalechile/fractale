@@ -55,23 +55,52 @@ export default function Portada() {
       <main id="top">
 
         {/* portada */}
-        <section className="hero" style={{ paddingBottom: 0 }}>
-          <div className="wrap">
-            <p className="eyebrow">FRACTALE Sport Management</p>
-            <h1 className="display">El éxito está en el sur.</h1>
-            <p className="lead">Profesionalizamos carreras deportivas y llevamos a las marcas a los eventos clave del sur de Chile.</p>
-            <div className="ctas">
-              <a className="btn btn-blue" href="/inscripcion">Inscríbete</a>
-              <a className="btn btn-line" href="#contacto">Agendar reunión</a>
-              <a className="btn btn-line" href="#marcas">Propuesta para marcas</a>
+        <section className="giro" aria-label="Fractale Recovery en el Giro del Lago">
+          <div className="giro-lago" role="img" aria-label="Volcán Osorno sobre el lago Llanquihue"></div>
+          <div className="giro-ciclistas" aria-hidden="true"></div>
+          <div className="giro-txt">
+            <span className="giro-tag"><i aria-hidden="true"></i>En vivo · Giro del Lago · Playa Venado, Puerto Varas</span>
+            <h1>163 km<br />alrededor del lago.<br /><span>Ahora, recupérate.</span></h1>
+            <p>Fractale Recovery está en la meta: presoterapia, plataforma de salto y suplementos para tu vuelta a casa.</p>
+            <div className="giro-ctas">
+              <a className="btn btn-white" href="/stand">Registra tu visita</a>
+              <a className="btn giro-btn-line" href="#recovery">Ver servicios</a>
             </div>
           </div>
-          <div className="portada"><div role="img" aria-label="Bahía de Puerto Montt"></div>
-            <p className="foto-pie">Puerto Montt, Región de Los Lagos.</p></div>
+          <div className="giro-fecha"><b>22.11</b>Domingo · Lago Llanquihue</div>
+        </section>
+
+        <div className="giro-cinta" aria-hidden="true"><div>
+          {[0, 1].map((n) => (
+            <span key={n}>
+              <span>PRESOTERAPIA</span>·<span>PLATAFORMA DE SALTO</span>·<span>SUPLEMENTOS</span>·
+              <span>GIRO DEL LAGO 2026</span>·<span>163 KM · 80 KM</span>·<span>FRACTALE RECOVERY</span>·
+            </span>
+          ))}
+        </div></div>
+
+        <section className="recovery" id="recovery">
+          <div className="wrap">
+            <h2 className="headline">Recovery en la meta.</h2>
+            <p className="lead">Tres estaciones en el stand de Fractale. Pasa, recupera y llévate tus datos.</p>
+            <div className="estaciones">
+              <article className="estacion e1"><div className="fondo"><b>THERAPRESS</b></div>
+                <div className="t"><small>Recovery · Therapress</small><h3>Botas de compresión</h3>
+                  <p>Presoterapia Therapress para soltar las piernas después de la ruta.</p></div></article>
+              <article className="estacion e2"><div className="fondo"><b>CHRONOJUMP</b></div>
+                <div className="t"><small>Evaluación · Chronojump</small><h3>Plataforma de salto</h3>
+                  <p>Mide tu salto y tu fatiga post carrera con Chronojump. Te enviamos el resultado.</p></div></article>
+              <article className="estacion e3"><div className="fondo"><b>FORCEHUMAN</b></div>
+                <div className="t"><small>Nutrición · ForceHuman</small><h3>Suplementos</h3>
+                  <p>ForceHuman, la marca de Sammis Reyes, a la venta en el stand.</p></div></article>
+            </div>
+            <div className="ctas"><a className="btn btn-white" href="/stand">Registra tu visita</a></div>
+            <p className="giro-cred">Foto del lago: Wikimedia Commons (CC BY-SA 3.0). Ciclistas: Unsplash.</p>
+          </div>
         </section>
 
         {/* manifiesto */}
-        <section className="night" style={{ marginTop: 110 }}>
+        <section className="night">
           <div className="wrap">
             <div className="manifest">
               <p className="eyebrow">El paradigma que rompemos</p>
