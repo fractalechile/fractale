@@ -3,10 +3,17 @@ import { useState } from "react";
 import Barra from "../barra";
 
 const EVENTO_SLUG = "giro-del-lago-2026";
-const DISTANCIAS = ["163 km", "80 km", "Acompañante"];
+// Mismos datos que la fila sembrada en supabase/migrations/002_giro_del_lago.sql.
+const EVENTO = { fecha: "Domingo 22 de noviembre 2026", lugar: "Playa Venado, Puerto Varas" };
+
+const DISTANCIAS = [
+  { valor: "163 km", detalle: "Giro completo" },
+  { valor: "80 km", detalle: "Medio giro" },
+  { valor: "Acompañante", detalle: "Vine a apoyar" },
+];
 const SEXOS = ["Femenino", "Masculino", "Otro", "Prefiero no decir"];
 const SUPLEMENTOS = [
-  { valor: "Creatina", nombre: "Creatina", detalle: "Base" },
+  { valor: "Creatina", nombre: "Creatina", detalle: "base" },
   { valor: "Pre Workout", nombre: "Pre Workout", detalle: "" },
   { valor: "Rezet", nombre: "Rezet", detalle: "dormir" },
   { valor: "Essential", nombre: "Essential", detalle: "multivitamínico" },
@@ -18,6 +25,7 @@ export default function Stand() {
   const [msg, setMsg] = useState("");
   const [salto, setSalto] = useState(false);
   const [suple, setSuple] = useState(false);
+  const [numero, setNumero] = useState<number | null>(null);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -50,6 +58,7 @@ export default function Stand() {
     });
     const data = await res.json().catch(() => ({}));
     if (res.ok) {
+      setNumero(typeof data.numero === "number" ? data.numero : null);
       setEstado("ok");
       formulario.reset();
       setSalto(false);
@@ -65,11 +74,22 @@ export default function Stand() {
       <>
         <Barra />
         <main className="listo">
-          <div className="tic" aria-hidden="true">✓</div>
+          <div className="tic-grande" aria-hidden="true">✓</div>
           <h1 className="title">¡Gracias por pasar!</h1>
+          {numero !== null && (
+            <>
+              <p>Este es tu número de registro. Muéstralo en el stand para tu turno.</p>
+              <div className="numero">
+                <b>{String(numero).padStart(3, "0")}</b>
+                <span>Número de registro</span>
+              </div>
+            </>
+          )}
           <p>Registramos tu visita al stand de Fractale Recovery. Pronto te escribiremos con tus resultados.</p>
           <div className="ctas">
-            <button className="btn btn-blue" onClick={() => setEstado("idle")}>Registrar otra persona</button>
+            <button className="btn btn-blue" onClick={() => { setEstado("idle"); setNumero(null); }}>
+              Registrar otra persona
+            </button>
             <a className="btn btn-line" href="/">Volver a la portada</a>
           </div>
         </main>
@@ -79,67 +99,118 @@ export default function Stand() {
   return (
     <>
       <Barra />
-      <main className="hoja">
-        <p className="eyebrow mini">Giro del Lago 2026 · Playa Venado, Puerto Varas</p>
-        <h1 className="title">Fractale Recovery.</h1>
-        <p className="lead">30 segundos. Cuéntanos qué usaste hoy y te enviamos tus resultados por correo.</p>
 
-        <form className="ficha" onSubmit={onSubmit}>
+      <header className="cabecera">
+        <p className="eyebrow">Giro del Lago 2026</p>
+        <h1>Fractale Recovery.</h1>
+        <p>30 segundos. Cuéntanos qué servicios recibiste hoy y te enviamos tus resultados por correo.</p>
+        <div className="datos">
+          <span>📅 {EVENTO.fecha}</span>
+          <span>📍 {EVENTO.lugar}</span>
+        </div>
+      </header>
+
+      <main className="hoja-form">
+        <form className="tarjeta" onSubmit={onSubmit}>
+
           <fieldset className="grupo">
-            <legend>Tus datos</legend>
+            <legend><i>1</i>Tus datos</legend>
             <div className="rejilla">
               <label className="campo ancho"><span>Nombre y apellido <i className="req">*</i></span>
-                <input name="nombre" required autoComplete="name" /></label>
+                <input name="nombre" required autoComplete="name" placeholder="Nombre y apellido" /></label>
               <label className="campo"><span>Correo <i className="req">*</i></span>
                 <input name="email" type="email" required autoComplete="email" placeholder="correo@ejemplo.com" /></label>
               <label className="campo"><span>Teléfono</span>
                 <input name="telefono" type="tel" autoComplete="tel" placeholder="+56 9 1234 5678" /></label>
-              <label className="campo"><span>Sexo <i className="req">*</i></span>
-                <select name="sexo" required defaultValue="">
-                  <option value="" disabled>Selecciona…</option>
-                  {SEXOS.map((s) => <option key={s}>{s}</option>)}
-                </select></label>
               <label className="campo"><span>Edad <i className="req">*</i></span>
                 <input name="edad" type="number" inputMode="numeric" min={5} max={100} required placeholder="35" /></label>
-              <label className="campo ancho"><span>¿De qué ciudad vienes? <i className="req">*</i></span>
+              <label className="campo"><span>¿De qué ciudad vienes? <i className="req">*</i></span>
                 <input name="ciudad" required autoComplete="address-level2" placeholder="Puerto Varas" /></label>
             </div>
-          </fieldset>
 
-          <fieldset className="grupo">
-            <legend>¿Qué distancia corriste?</legend>
-            <div className="pildoras">
-              {DISTANCIAS.map((d) => (
-                <label key={d}><input type="radio" name="distancia" value={d} /><span>{d}</span></label>
+            <p className="ayuda" style={{ marginTop: 18 }}>Sexo <i className="req">*</i></p>
+            <div className="chips">
+              {SEXOS.map((s, i) => (
+                <label className="chip" key={s}>
+                  <input type="radio" name="sexo" value={s} required={i === 0} />
+                  <span className="marco">{s}</span>
+                </label>
               ))}
             </div>
           </fieldset>
 
+          <hr className="separa" />
+
           <fieldset className="grupo">
-            <legend>¿Qué usaste hoy en el stand?</legend>
-            <label className="visto-bueno">
-              <input type="checkbox" name="uso_presoterapia" />
-              <span><b>Presoterapia</b> · botas de compresión Therapress</span>
-            </label>
-            <label className="visto-bueno">
-              <input type="checkbox" name="uso_plataforma_salto" onChange={(e) => setSalto(e.target.checked)} />
-              <span><b>Plataforma de salto</b> · Chronojump</span>
-            </label>
+            <legend><i>2</i>Tu carrera</legend>
+            <p className="ayuda">¿Qué distancia corriste?</p>
+            <div className="opciones">
+              {DISTANCIAS.map((d) => (
+                <label className="opcion" key={d.valor}>
+                  <input type="radio" name="distancia" value={d.valor} />
+                  <span className="marco"><b>{d.valor}</b><small>{d.detalle}</small></span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <hr className="separa" />
+
+          <fieldset className="grupo">
+            <legend><i>3</i>Servicios</legend>
+            <p className="ayuda">
+              ¿Qué servicios quieres recibir o recibiste hoy en el stand?
+              Marca todos los que correspondan.
+            </p>
+
+            <div className="servicios">
+              <label className="servicio">
+                <input type="checkbox" name="uso_presoterapia" />
+                <span className="marco">
+                  <span className="ico" aria-hidden="true">🦵</span>
+                  <span className="texto"><b>Presoterapia</b><small>Botas de compresión Therapress.</small></span>
+                  <span className="tic" aria-hidden="true">✓</span>
+                </span>
+              </label>
+
+              <label className="servicio">
+                <input type="checkbox" name="uso_plataforma_salto" onChange={(e) => setSalto(e.target.checked)} />
+                <span className="marco">
+                  <span className="ico" aria-hidden="true">⚡️</span>
+                  <span className="texto"><b>Plataforma de salto</b><small>Medición de potencia con Chronojump.</small></span>
+                  <span className="tic" aria-hidden="true">✓</span>
+                </span>
+              </label>
+            </div>
+
             {salto && (
-              <label className="campo salto-cm"><span>Altura de tu salto (cm)</span>
-                <input name="salto_cm" inputMode="decimal" placeholder="32,5" /></label>
+              <div className="anidado">
+                <p className="ayuda">¿Cuánto saltaste? Lo anota quien te atendió.</p>
+                <label className="campo" style={{ maxWidth: 200 }}><span>Altura en centímetros</span>
+                  <input name="salto_cm" inputMode="decimal" placeholder="32,5" autoFocus /></label>
+              </div>
             )}
-            <label className="visto-bueno">
-              <input type="checkbox" name="compro_suplementos" onChange={(e) => setSuple(e.target.checked)} />
-              <span><b>Compré suplementos</b> · ForceHuman</span>
-            </label>
+
+            <div className="servicios" style={{ marginTop: 10 }}>
+              <label className="servicio">
+                <input type="checkbox" name="compro_suplementos" onChange={(e) => setSuple(e.target.checked)} />
+                <span className="marco">
+                  <span className="ico" aria-hidden="true">💊</span>
+                  <span className="texto"><b>Suplementos ForceHuman</b><small>Compré en el stand.</small></span>
+                  <span className="tic" aria-hidden="true">✓</span>
+                </span>
+              </label>
+            </div>
+
             {suple && (
-              <div className="suple">
-                <p>¿Cuáles? Puedes marcar varios.</p>
-                <div className="pildoras">
+              <div className="anidado">
+                <p className="ayuda">¿Cuáles? Puedes marcar varios.</p>
+                <div className="chips">
                   {SUPLEMENTOS.map((s) => (
-                    <label key={s.valor}><input type="checkbox" name="suplementos" value={s.valor} />
-                      <span>{s.nombre}{s.detalle && <small> · {s.detalle}</small>}</span></label>
+                    <label className="chip" key={s.valor}>
+                      <input type="checkbox" name="suplementos" value={s.valor} />
+                      <span className="marco">{s.nombre}{s.detalle && <small> · {s.detalle}</small>}</span>
+                    </label>
                   ))}
                 </div>
               </div>
@@ -149,8 +220,10 @@ export default function Stand() {
           {/* Honeypot: los humanos no lo ven */}
           <input name="website" tabIndex={-1} autoComplete="off" className="oculto" aria-hidden="true" />
 
+          <hr className="separa" />
+
           <fieldset className="grupo">
-            <legend>Autorizaciones</legend>
+            <legend><i>4</i>Autorizaciones</legend>
             <label className="visto-bueno">
               <input type="checkbox" name="acepta_terminos" required />
               <span>Acepto los <a href="/terminos" target="_blank">términos y la política de privacidad</a>. *</span>

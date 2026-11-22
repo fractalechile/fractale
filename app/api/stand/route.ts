@@ -34,7 +34,7 @@ export async function POST(req: Request) {
     .from("eventos").select("id").eq("slug", d.evento_slug).eq("activo", true).single();
   if (!evento) return NextResponse.json({ error: "Evento no disponible." }, { status: 404 });
 
-  const { error } = await supabaseAdmin.from("visitas_stand").insert({
+  const { data: visita, error } = await supabaseAdmin.from("visitas_stand").insert({
     evento_id: evento.id,
     nombre: d.nombre,
     email: d.email,
@@ -50,11 +50,12 @@ export async function POST(req: Request) {
     suplementos: d.compro_suplementos ? d.suplementos : [],
     acepta_terminos: true,
     acepta_comunicaciones: d.acepta_comunicaciones,
-  });
+  }).select("numero").single();
 
   if (error) {
     console.error(error);
     return NextResponse.json({ error: "No pudimos registrar tu visita." }, { status: 500 });
   }
-  return NextResponse.json({ ok: true });
+  // El número correlativo le sirve a la persona como número de fila en el stand.
+  return NextResponse.json({ ok: true, numero: visita?.numero ?? null });
 }

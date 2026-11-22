@@ -3,7 +3,14 @@ import { useState } from "react";
 import Barra from "../barra";
 
 const EVENTO_SLUG = "media-maraton-los-ulmos";
-const CATEGORIAS = ["21K", "10K", "5K"];
+// Mismos datos que la fila sembrada en supabase/migrations/001_inscripciones.sql.
+const EVENTO = { fecha: "18 de abril de 2027", lugar: "Los Lagos, Chile" };
+
+const CATEGORIAS = [
+  { valor: "21K", detalle: "Media maratón" },
+  { valor: "10K", detalle: "Diez kilómetros" },
+  { valor: "5K", detalle: "Cinco kilómetros" },
+];
 const TALLAS = ["XS", "S", "M", "L", "XL", "XXL"];
 
 export default function Inscripcion() {
@@ -15,7 +22,8 @@ export default function Inscripcion() {
     setEstado("enviando");
     // /inscripcion?origen=stand → para registrar a alguien en tablet desde el stand
     const origen = new URLSearchParams(window.location.search).get("origen") === "stand" ? "stand" : "web";
-    const f = new FormData(e.currentTarget);
+    const formulario = e.currentTarget;
+    const f = new FormData(formulario);
     const body = {
       evento_slug: EVENTO_SLUG,
       origen,
@@ -34,7 +42,6 @@ export default function Inscripcion() {
       acepta_comunicaciones: f.get("acepta_comunicaciones") === "on",
       website: f.get("website"),
     };
-    const formulario = e.currentTarget;
     const res = await fetch("/api/inscripcion", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -55,9 +62,9 @@ export default function Inscripcion() {
       <>
         <Barra />
         <main className="listo">
-          <div className="tic" aria-hidden="true">✓</div>
+          <div className="tic-grande" aria-hidden="true">✓</div>
           <h1 className="title">¡Inscripción lista!</h1>
-          <p>Te enviamos un correo de confirmación con tu código QR. Guárdalo: lo necesitarás para retirar tu kit.</p>
+          <p>Te enviamos un correo con tu código QR. Guárdalo: lo necesitarás para retirar tu kit y en el stand.</p>
           <div className="ctas"><a className="btn btn-line" href="/">Volver a la portada</a></div>
         </main>
       </>
@@ -66,60 +73,83 @@ export default function Inscripcion() {
   return (
     <>
       <Barra />
-      <main className="hoja">
-        <p className="eyebrow mini">Media Maratón Internacional Ruta de los Ulmos</p>
-        <h1 className="title">Inscríbete.</h1>
-        <p className="lead">Completa tus datos y recibirás por correo tu confirmación con el código QR de acreditación.</p>
 
-        <form className="ficha" onSubmit={onSubmit}>
+      <header className="cabecera">
+        <p className="eyebrow">Media Maratón Internacional</p>
+        <h1>Ruta de los Ulmos.</h1>
+        <p>Corre con el respaldo de todo el equipo de FRACTALE: antes, durante y después de la meta.</p>
+        <div className="datos">
+          <span>📅 {EVENTO.fecha}</span>
+          <span>📍 {EVENTO.lugar}</span>
+          <span>🏁 21K · 10K · 5K</span>
+        </div>
+      </header>
+
+      <main className="hoja-form">
+        <form className="tarjeta" onSubmit={onSubmit}>
+
           <fieldset className="grupo">
-            <legend>Tus datos</legend>
+            <legend><i>1</i>Tus datos</legend>
             <div className="rejilla">
               <label className="campo ancho"><span>Nombre completo <i className="req">*</i></span>
-                <input name="nombre" required autoComplete="name" /></label>
+                <input name="nombre" required autoComplete="name" placeholder="Nombre y apellidos" /></label>
               <label className="campo"><span>RUT</span>
                 <input name="rut" placeholder="12.345.678-9" /></label>
               <label className="campo"><span>Fecha de nacimiento</span>
                 <input name="fecha_nacimiento" type="date" /></label>
               <label className="campo"><span>Correo <i className="req">*</i></span>
-                <input name="email" type="email" required autoComplete="email" /></label>
+                <input name="email" type="email" required autoComplete="email" placeholder="tu@correo.com" /></label>
               <label className="campo"><span>Teléfono</span>
-                <input name="telefono" type="tel" autoComplete="tel" /></label>
+                <input name="telefono" type="tel" autoComplete="tel" placeholder="+56 9 ..." /></label>
               <label className="campo"><span>Género</span>
                 <select name="genero" defaultValue="">
                   <option value="">—</option>
                   <option>Femenino</option><option>Masculino</option><option>Otro</option>
                 </select></label>
               <label className="campo"><span>Ciudad</span>
-                <input name="ciudad" /></label>
+                <input name="ciudad" placeholder="Puerto Montt" /></label>
             </div>
           </fieldset>
 
+          <hr className="separa" />
+
           <fieldset className="grupo">
-            <legend>La carrera</legend>
-            <div className="rejilla">
-              <label className="campo"><span>Categoría <i className="req">*</i></span>
-                <select name="categoria" required defaultValue="">
-                  <option value="" disabled>Selecciona…</option>
-                  {CATEGORIAS.map((c) => <option key={c}>{c}</option>)}
-                </select></label>
-              <label className="campo"><span>Talla de polera</span>
-                <select name="talla_polera" defaultValue="">
-                  <option value="">—</option>
-                  {TALLAS.map((t) => <option key={t}>{t}</option>)}
-                </select></label>
+            <legend><i>2</i>Tu carrera</legend>
+            <div className="opciones">
+              {CATEGORIAS.map((c, i) => (
+                <label className="opcion" key={c.valor}>
+                  <input type="radio" name="categoria" value={c.valor} required={i === 0} />
+                  <span className="marco"><b>{c.valor}</b><small>{c.detalle}</small></span>
+                </label>
+              ))}
+            </div>
+
+            <p className="ayuda" style={{ marginTop: 22 }}>Talla de polera</p>
+            <div className="chips">
+              {TALLAS.map((t) => (
+                <label className="chip" key={t}>
+                  <input type="radio" name="talla_polera" value={t} />
+                  <span className="marco">{t}</span>
+                </label>
+              ))}
+            </div>
+
+            <div className="rejilla" style={{ marginTop: 22 }}>
               <label className="campo ancho"><span>Club o equipo</span>
-                <input name="club" /></label>
+                <input name="club" placeholder="Si corres con uno" /></label>
               <label className="campo ancho"><span>Contacto de emergencia (nombre y teléfono)</span>
                 <input name="contacto_emergencia" /></label>
             </div>
           </fieldset>
 
+
           {/* Honeypot: los humanos no lo ven */}
           <input name="website" tabIndex={-1} autoComplete="off" className="oculto" aria-hidden="true" />
 
+          <hr className="separa" />
+
           <fieldset className="grupo">
-            <legend>Autorizaciones</legend>
+            <legend><i>3</i>Autorizaciones</legend>
             <label className="visto-bueno">
               <input type="checkbox" name="acepta_terminos" required />
               <span>Acepto los <a href="/terminos" target="_blank">términos y condiciones</a> del evento. *</span>
