@@ -100,7 +100,7 @@ export default function Stand() {
     <>
       <Barra />
 
-      <header className="cabecera">
+      <header className="cabecera ciclistas">
         <p className="eyebrow">Giro del Lago 2026</p>
         <h1>Fractale Recovery.</h1>
         <p>30 segundos. Cuéntanos qué servicios recibiste hoy y te enviamos tus resultados por correo.</p>

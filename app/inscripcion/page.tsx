@@ -74,7 +74,7 @@ export default function Inscripcion() {
     <>
       <Barra />
 
-      <header className="cabecera">
+      <header className="cabecera corredores">
         <p className="eyebrow">Media Maratón Internacional</p>
         <h1>Ruta de los Ulmos.</h1>
         <p>Corre con el respaldo de todo el equipo de FRACTALE: antes, durante y después de la meta.</p>
