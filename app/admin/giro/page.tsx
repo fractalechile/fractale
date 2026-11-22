@@ -1,9 +1,11 @@
+import { revalidatePath } from "next/cache";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Stand Giro del Lago · FRACTALE" };
 
 type Visita = {
+  id: string;
   numero: number | null;
   nombre: string;
   email: string;
@@ -20,6 +22,39 @@ type Visita = {
   acepta_comunicaciones: boolean;
   created_at: string;
 };
+
+const SERVICIOS = [
+  ["uso_presoterapia", "Presoterapia"],
+  ["uso_plataforma_salto", "Salto"],
+  ["compro_suplementos", "Compró"],
+] as const;
+
+/** Anota el salto de alguien que ya se había registrado. */
+async function guardarSalto(datos: FormData) {
+  "use server";
+  const id = String(datos.get("id"));
+  const bruto = String(datos.get("cm") ?? "").replace(",", ".").trim();
+  const cm = bruto === "" ? null : Number(bruto);
+  if (cm !== null && (Number.isNaN(cm) || cm < 0 || cm > 150)) return;
+
+  await supabaseAdmin
+    .from("visitas_stand")
+    .update({ salto_cm: cm, ...(cm !== null ? { uso_plataforma_salto: true } : {}) })
+    .eq("id", id);
+  revalidatePath("/admin/giro");
+}
+
+/** Marca o desmarca un servicio, para quien vuelve al stand más tarde. */
+async function alternarServicio(datos: FormData) {
+  "use server";
+  const id = String(datos.get("id"));
+  const campo = String(datos.get("campo"));
+  if (!SERVICIOS.some(([c]) => c === campo)) return;
+  const valor = datos.get("valor") === "1";
+
+  await supabaseAdmin.from("visitas_stand").update({ [campo]: !valor }).eq("id", id);
+  revalidatePath("/admin/giro");
+}
 
 const pct = (a: number, b: number) => (b ? `${Math.round((a / b) * 100)}%` : "—");
 
@@ -129,13 +164,33 @@ export default async function PanelGiro() {
                 <td>{v.ciudad ?? "—"}</td>
                 <td>{v.distancia ?? "—"}</td>
                 <td>
-                  {[
-                    v.uso_presoterapia && "Presoterapia",
-                    v.uso_plataforma_salto && "Salto",
-                    v.compro_suplementos && `Compró${v.suplementos?.length ? `: ${v.suplementos.join(", ")}` : ""}`,
-                  ].filter(Boolean).join(" · ") || "—"}
+                  <div className="marcas">
+                    {SERVICIOS.map(([campo, etiqueta]) => {
+                      const puesto = Boolean(v[campo]);
+                      return (
+                        <form action={alternarServicio} key={campo}>
+                          <input type="hidden" name="id" value={v.id} />
+                          <input type="hidden" name="campo" value={campo} />
+                          <input type="hidden" name="valor" value={puesto ? "1" : "0"} />
+                          <button className={puesto ? "marca on" : "marca"}>
+                            {puesto ? "✓ " : ""}{etiqueta}
+                          </button>
+                        </form>
+                      );
+                    })}
+                  </div>
+                  {v.compro_suplementos && v.suplementos?.length ? (
+                    <small>{v.suplementos.join(", ")}</small>
+                  ) : null}
                 </td>
-                <td>{v.salto_cm != null ? `${v.salto_cm} cm` : "—"}</td>
+                <td>
+                  <form action={guardarSalto} className="salto-edit">
+                    <input type="hidden" name="id" value={v.id} />
+                    <input name="cm" defaultValue={v.salto_cm ?? ""} inputMode="decimal"
+                      placeholder="cm" aria-label={`Altura de salto de ${v.nombre}`} />
+                    <button>Guardar</button>
+                  </form>
+                </td>
                 <td>{hora(v.created_at)}</td>
               </tr>
             ))}
