@@ -557,3 +557,7 @@ footer .nota{padding-bottom:16px;border-bottom:1px solid var(--line);margin:0}
 .salto-edit button{padding:7px 12px;border-radius:10px;border:1px solid var(--line);
   background:#fff;font-size:12px;cursor:pointer;white-space:nowrap}
 .salto-edit button:hover{border-color:var(--ink-3)}
+.marcas.suples{margin-top:7px;padding-top:7px;border-top:1px dashed var(--line)}
+.marca.chica{font-size:11px;padding:4px 9px}
+.salto-val{font-size:13px;color:var(--ink-3);margin-bottom:5px}
+.salto-val.puesto{color:var(--ink);font-weight:600;font-size:15px}

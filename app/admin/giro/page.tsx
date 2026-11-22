@@ -29,6 +29,8 @@ const SERVICIOS = [
   ["compro_suplementos", "Compró"],
 ] as const;
 
+const SUPLEMENTOS = ["Creatina", "Pre Workout", "Rezet", "Essential", "Focus"];
+
 /** Anota el salto de alguien que ya se había registrado. */
 async function guardarSalto(datos: FormData) {
   "use server";
@@ -50,9 +52,35 @@ async function alternarServicio(datos: FormData) {
   const id = String(datos.get("id"));
   const campo = String(datos.get("campo"));
   if (!SERVICIOS.some(([c]) => c === campo)) return;
-  const valor = datos.get("valor") === "1";
+  const puesto = datos.get("valor") === "1";
 
-  await supabaseAdmin.from("visitas_stand").update({ [campo]: !valor }).eq("id", id);
+  // Al desmarcar la compra se vacía la lista, para que no queden suplementos
+  // colgando de una compra que ya no existe.
+  const cambio: Record<string, unknown> = { [campo]: !puesto };
+  if (campo === "compro_suplementos" && puesto) cambio.suplementos = [];
+
+  await supabaseAdmin.from("visitas_stand").update(cambio).eq("id", id);
+  revalidatePath("/admin/giro");
+}
+
+/** Agrega o quita un suplemento de la compra. */
+async function alternarSuplemento(datos: FormData) {
+  "use server";
+  const id = String(datos.get("id"));
+  const nombre = String(datos.get("nombre"));
+  if (!SUPLEMENTOS.includes(nombre)) return;
+
+  const { data: fila } = await supabaseAdmin
+    .from("visitas_stand").select("suplementos").eq("id", id).single();
+  const actuales: string[] = fila?.suplementos ?? [];
+  const lista = actuales.includes(nombre)
+    ? actuales.filter((x) => x !== nombre)
+    : [...actuales, nombre];
+
+  await supabaseAdmin
+    .from("visitas_stand")
+    .update({ suplementos: lista, compro_suplementos: lista.length > 0 })
+    .eq("id", id);
   revalidatePath("/admin/giro");
 }
 
@@ -179,15 +207,32 @@ export default async function PanelGiro() {
                       );
                     })}
                   </div>
-                  {v.compro_suplementos && v.suplementos?.length ? (
-                    <small>{v.suplementos.join(", ")}</small>
-                  ) : null}
+                  {v.compro_suplementos && (
+                    <div className="marcas suples">
+                      {SUPLEMENTOS.map((nombre) => {
+                        const puesto = (v.suplementos ?? []).includes(nombre);
+                        return (
+                          <form action={alternarSuplemento} key={nombre}>
+                            <input type="hidden" name="id" value={v.id} />
+                            <input type="hidden" name="nombre" value={nombre} />
+                            <button className={puesto ? "marca chica on" : "marca chica"}>
+                              {puesto ? "✓ " : ""}{nombre}
+                            </button>
+                          </form>
+                        );
+                      })}
+                    </div>
+                  )}
                 </td>
                 <td>
+                  <div className={v.salto_cm != null ? "salto-val puesto" : "salto-val"}>
+                    {v.salto_cm != null ? `${v.salto_cm} cm` : "sin anotar"}
+                  </div>
                   <form action={guardarSalto} className="salto-edit">
                     <input type="hidden" name="id" value={v.id} />
-                    <input name="cm" defaultValue={v.salto_cm ?? ""} inputMode="decimal"
-                      placeholder="cm" aria-label={`Altura de salto de ${v.nombre}`} />
+                    <input key={String(v.salto_cm)} name="cm" defaultValue={v.salto_cm ?? ""}
+                      inputMode="decimal" placeholder="cm"
+                      aria-label={`Altura de salto de ${v.nombre}`} />
                     <button>Guardar</button>
                   </form>
                 </td>
