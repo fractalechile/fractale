@@ -114,7 +114,7 @@ button{font:inherit;color:inherit}
   animation:giro-zoom 18s ease-out forwards}
 @keyframes giro-zoom{from{transform:scale(1.12)}to{transform:scale(1)}}
 .giro-ciclistas{position:absolute;left:0;right:0;bottom:0;height:62%;z-index:1;
-  background:url("https://images.unsplash.com/photo-1658736415101-2c3cd342d78d?q=80&w=1920&auto=format&fit=crop") center 35%/cover;
+  background:url("/assets/fotos/ciclistas.jpg") center 35%/cover;
   filter:blur(3px) saturate(.9);opacity:.55;mix-blend-mode:screen;
   -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 45%,#000 75%,transparent 100%);
   mask-image:linear-gradient(180deg,transparent 0%,#000 45%,#000 75%,transparent 100%);
@@ -411,7 +411,7 @@ footer .nota{padding-bottom:16px;border-bottom:1px solid var(--line);margin:0}
 /* Ciclistas: la misma foto de la portada del Giro, para que las dos páginas
    hablen del mismo evento. */
 .cabecera.ciclistas::before{
-  background-image:url("https://images.unsplash.com/photo-1658736415101-2c3cd342d78d?q=80&w=1920&auto=format&fit=crop");
+  background-image:url("/assets/fotos/ciclistas.jpg");
   background-position:center 42%}
 /* Corredores, para la media maratón. */
 .cabecera.corredores::before{background-image:url("/assets/fotos/meta.jpg")}
