@@ -2,7 +2,7 @@
    - cachea la app para que funcione sin internet
    - recibe las notificaciones push enviadas desde el servidor
    - lee el progreso del día desde IndexedDB para que el aviso sea específico */
-const CACHE = "app-v54";
+const CACHE = "app-v55";
 const SHELL = [
   "./", "./index.html", "./app.html", "./manifest.webmanifest",
   "./icons/icon-192.png", "./icons/icon-512.png", "./icons/apple-touch-icon.png",
@@ -25,9 +25,16 @@ self.addEventListener("activate", e=>{
 });
 
 /* red primero para el HTML (para que veas los cambios), caché como respaldo */
+/* El sitio tiene páginas que no son parte de la app instalada: el formulario
+   del stand, las inscripciones y el panel del evento. Como este worker se
+   registra en la raíz del dominio, las interceptaría también y, sin señal,
+   podría servir la app en su lugar. Se dejan pasar sin tocarlas. */
+const AJENAS = /^\/(stand|admin|inscripcion|terminos|api|_next)(\/|$)/;
+
 self.addEventListener("fetch", e=>{
   const req = e.request;
   if(req.method !== "GET" || new URL(req.url).origin !== location.origin) return;
+  if(AJENAS.test(new URL(req.url).pathname)) return;
   // el HTML se pide siempre al servidor, sin pasar por la caché del navegador:
   // si no, una copia guardada podía tapar una versión nueva durante horas
   const esHTML = req.mode === "navigate" ||
