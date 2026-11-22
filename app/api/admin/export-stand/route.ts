@@ -1,4 +1,5 @@
 import { supabaseAdmin } from "@/lib/supabase-admin";
+import { eventoDelStand, eventoPorSlug } from "@/lib/eventos";
 
 const csv = (v: unknown) =>
   `"${(Array.isArray(v) ? v.join(" | ") : String(v ?? "")).replace(/"/g, '""')}"`;
@@ -9,9 +10,9 @@ const COLS = [
   "suplementos", "acepta_comunicaciones", "created_at",
 ];
 
-export async function GET() {
-  const { data: ev } = await supabaseAdmin
-    .from("eventos").select("id").eq("slug", "giro-del-lago-2026").single();
+export async function GET(req: Request) {
+  const slug = new URL(req.url).searchParams.get("evento");
+  const ev = slug ? await eventoPorSlug(slug) : await eventoDelStand();
   if (!ev) return new Response("Evento no encontrado", { status: 404 });
 
   const { data: filas } = await supabaseAdmin
@@ -26,7 +27,7 @@ export async function GET() {
   return new Response("﻿" + [COLS.join(","), ...cuerpo].join("\n"), {
     headers: {
       "Content-Type": "text/csv; charset=utf-8",
-      "Content-Disposition": 'attachment; filename="giro-del-lago-2026-stand.csv"',
+      "Content-Disposition": `attachment; filename="${ev.slug}-stand.csv"`,
     },
   });
 }

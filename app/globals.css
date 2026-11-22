@@ -570,3 +570,15 @@ footer .nota{padding-bottom:16px;border-bottom:1px solid var(--line);margin:0}
 .marca.chica{font-size:11px;padding:4px 9px}
 .salto-val{font-size:13px;color:var(--ink-3);margin-bottom:5px}
 .salto-val.puesto{color:var(--ink);font-weight:600;font-size:15px}
+
+/* ---------- panel de eventos ---------- */
+.eventos-nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
+.eventos-nav a{padding:7px 14px;border-radius:999px;border:1px solid var(--line);font-size:14px;color:var(--ink)}
+.eventos-nav a.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.eventos-nav a.gestion{border-style:dashed;color:var(--link)}
+.ayuda-panel{font-size:15px;color:var(--ink-2);margin:18px 0 22px;max-width:70ch}
+.tabla td small{display:block;color:var(--ink-3);font-size:12px}
+.nuevo-evento{max-width:720px}
+.campo textarea{width:100%;padding:11px 13px;font:inherit;font-size:16px;color:var(--ink);
+  background:#fff;border:1px solid var(--line);border-radius:12px;resize:vertical}
+.campo textarea:focus{outline:none;border-color:var(--blue)}

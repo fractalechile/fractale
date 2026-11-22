@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { supabaseAdmin } from "@/lib/supabase-admin";
+import { eventoPorSlug } from "@/lib/eventos";
 
 const schema = z.object({
   evento_slug: z.string().min(1),
@@ -10,7 +11,7 @@ const schema = z.object({
   sexo: z.enum(["Femenino", "Masculino", "Otro", "Prefiero no decir"]),
   edad: z.number().int().min(5).max(100),
   ciudad: z.string().trim().min(2).max(80),
-  distancia: z.enum(["163 km", "80 km", "Acompañante"]).optional().or(z.literal("")),
+  distancia: z.string().trim().max(40).optional().or(z.literal("")),
   uso_presoterapia: z.boolean(),
   uso_plataforma_salto: z.boolean(),
   salto_cm: z.number().min(0).max(150).nullable(),
@@ -30,9 +31,12 @@ export async function POST(req: Request) {
   const d = parsed.data;
   if (d.website) return NextResponse.json({ ok: true }); // bot: fingimos éxito
 
-  const { data: evento } = await supabaseAdmin
-    .from("eventos").select("id").eq("slug", d.evento_slug).eq("activo", true).single();
-  if (!evento) return NextResponse.json({ error: "Evento no disponible." }, { status: 404 });
+  const evento = await eventoPorSlug(d.evento_slug);
+  if (!evento || !evento.activo) return NextResponse.json({ error: "Evento no disponible." }, { status: 404 });
+  // La distancia tiene que ser una de las que definió ese evento.
+  if (d.distancia && !evento.distancias.some((x) => x.valor === d.distancia)) {
+    return NextResponse.json({ error: "Revisa los datos del formulario." }, { status: 400 });
+  }
 
   const fila = {
     evento_id: evento.id,
