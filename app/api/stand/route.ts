@@ -34,7 +34,7 @@ export async function POST(req: Request) {
     .from("eventos").select("id").eq("slug", d.evento_slug).eq("activo", true).single();
   if (!evento) return NextResponse.json({ error: "Evento no disponible." }, { status: 404 });
 
-  const { data: visita, error } = await supabaseAdmin.from("visitas_stand").insert({
+  const fila = {
     evento_id: evento.id,
     nombre: d.nombre,
     email: d.email,
@@ -50,12 +50,25 @@ export async function POST(req: Request) {
     suplementos: d.compro_suplementos ? d.suplementos : [],
     acepta_terminos: true,
     acepta_comunicaciones: d.acepta_comunicaciones,
-  }).select("numero").single();
+  };
+
+  // La columna `numero` llega con 005_numero_de_registro.sql. Si todavía no se
+  // ejecutó, el registro igual se guarda: solo se queda sin número de fila.
+  let numero: number | null = null;
+  let { data: visita, error } = await supabaseAdmin
+    .from("visitas_stand").insert(fila).select("numero").single();
+
+  if (error && /numero/i.test(`${error.message} ${error.details ?? ""}`)) {
+    console.warn("Falta la columna numero; guardando sin número de registro.");
+    ({ error } = await supabaseAdmin.from("visitas_stand").insert(fila));
+  } else {
+    numero = visita?.numero ?? null;
+  }
 
   if (error) {
     console.error(error);
     return NextResponse.json({ error: "No pudimos registrar tu visita." }, { status: 500 });
   }
   // El número correlativo le sirve a la persona como número de fila en el stand.
-  return NextResponse.json({ ok: true, numero: visita?.numero ?? null });
+  return NextResponse.json({ ok: true, numero });
 }
