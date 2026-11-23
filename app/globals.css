@@ -584,6 +584,7 @@ footer .nota{padding-bottom:16px;border-bottom:1px solid var(--line);margin:0}
 .campo textarea:focus{outline:none;border-color:var(--blue)}
 
 /* ---------- carpetas de eventos ---------- */
+.panel section{padding:0}
 .carpetas{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:26px}
 .carpeta{position:relative;display:block;margin-top:14px;padding:22px;background:var(--gray);color:var(--ink);
   border-radius:0 16px 16px 16px;transition:transform .2s,box-shadow .2s}
