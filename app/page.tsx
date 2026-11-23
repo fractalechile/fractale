@@ -4,6 +4,7 @@ export default function Portada() {
   return (
     <>
       <EfectosPortada />
+      <div className="fondo-portada" aria-hidden="true" />
 
       {/* barra global */}
       <nav className="gnav" id="head" aria-label="Global">
@@ -55,7 +56,7 @@ export default function Portada() {
       <main id="top">
 
         {/* portada */}
-        <section className="hero" style={{ paddingBottom: 0 }}>
+        <section className="hero">
           <div className="wrap">
             <p className="eyebrow">FRACTALE Sport Management</p>
             <h1 className="display">El éxito está en el sur.</h1>
@@ -66,12 +67,10 @@ export default function Portada() {
               <a className="btn btn-line" href="#marcas">Propuesta para marcas</a>
             </div>
           </div>
-          <div className="portada"><div role="img" aria-label="Bahía de Puerto Montt"></div>
-            <p className="foto-pie">Puerto Montt, Región de Los Lagos.</p></div>
         </section>
 
         {/* manifiesto */}
-        <section className="night" style={{ marginTop: 110 }}>
+        <section className="night">
           <div className="wrap">
             <div className="manifest">
               <p className="eyebrow">El paradigma que rompemos</p>
