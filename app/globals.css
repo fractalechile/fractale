@@ -606,14 +606,15 @@ footer .nota{padding-bottom:16px;border-bottom:1px solid var(--line);margin:0}
 html:has(.fondo-portada),body:has(.fondo-portada){background:transparent}
 .fondo-portada{position:fixed;inset:0;z-index:-1;overflow:hidden;background:#e9edf0}
 .fondo-portada::before{content:"";position:absolute;inset:-24px;
-  background:url("/assets/fotos/puerto-montt.jpg") center/cover no-repeat;filter:blur(5px) saturate(.95)}
-.fondo-portada::after{content:"";position:absolute;inset:0;background:rgba(255,255,255,.68)}
-.fondo-portada ~ .ribbon,.fondo-portada ~ main .gray{background:rgba(245,245,247,.74)}
+  background:url("/assets/fotos/puerto-montt.jpg") center/cover no-repeat;filter:blur(3px)}
+.fondo-portada::after{content:"";position:absolute;inset:0;background:rgba(255,255,255,.5)}
+.fondo-portada ~ .ribbon,.fondo-portada ~ main .gray{background:rgba(245,245,247,.68)}
 .fondo-portada ~ main .night{background:rgba(0,0,0,.84)}
-.fondo-portada ~ main > section:not(.hero):not(.gray):not(.night){background:rgba(255,255,255,.66)}
+.fondo-portada ~ main > section:not(.hero):not(.gray):not(.night){background:rgba(255,255,255,.6)}
 .fondo-portada ~ footer{background:rgba(245,245,247,.9)}
 .fondo-portada ~ main .hero{min-height:calc(100svh - 110px);display:flex;align-items:center;padding:56px 0}
 .fondo-portada ~ main .hero .wrap{width:100%}
+.fondo-portada ~ main .hero .eyebrow{color:var(--ink)}
 .fondo-portada ~ main .hero .display{max-width:none;text-wrap:balance}
 .fondo-portada ~ main .hero .btn-line{background:#fff}
 .fondo-portada ~ main .hero .btn-line:hover{background:var(--blue);color:#fff}
