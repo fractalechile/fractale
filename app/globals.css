@@ -697,6 +697,15 @@ html:has(.fondo-portada),body:has(.fondo-portada){background:transparent}
 .evento-logos span{height:54px;display:flex;align-items:center;justify-content:center}
 .evento-logos img{display:block;max-width:100%;max-height:50px;width:auto;height:auto;object-fit:contain}
 @media(max-width:833px){.evento-marcas{padding:26px}.evento-txt{padding:26px}}
+@media(max-width:560px){
+  .evento-marcas{padding:14px;gap:14px}
+  .evento-txt{padding:24px 20px}
+  .evento-txt .btn{width:100%;box-sizing:border-box;white-space:normal;text-align:center}
+  .evento-logos{padding:20px 18px}
+  .evento-logos>div{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px}
+  .evento-logos span{height:46px}
+  .evento-logos img{max-height:42px}
+}
 
 /* galería con una sola foto mientras llegan las nuevas */
 .galeria.una{grid-template-columns:minmax(0,420px);justify-content:center}
