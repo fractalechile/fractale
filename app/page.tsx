@@ -2,7 +2,7 @@ import EfectosPortada from "./efectos-portada";
 
 const ATLETAS = [
   {
-    dorsal: "07", nombre: "Francisco Marín Zúñiga", disciplina: "Trail Running",
+    dorsal: "07", nombre: "Francisco Marín Zúñiga", disciplina: "Trail Running", foto: "f-francisco",
     perfil: "Seleccionado Nacional 2025 · 720 pts ITRA",
     logros: [
       "1er lugar General, Cochrane Patagonia Trail 2022",
@@ -12,7 +12,7 @@ const ATLETAS = [
     ],
   },
   {
-    dorsal: "12", nombre: "Alen Hernández Concha", disciplina: "Karate · Kumite -68 kg",
+    dorsal: "12", nombre: "Alen Hernández Concha", disciplina: "Karate · Kumite -68 kg", foto: "f-alen",
     perfil: "Team Chile · Cinturón Negro 1er Dan",
     logros: [
       "1er lugar Nacional U21: 2024, 2025 y 2026",
@@ -22,7 +22,7 @@ const ATLETAS = [
     ],
   },
   {
-    dorsal: "21", nombre: "Joaquín Beroiza", disciplina: "Remo Olímpico",
+    dorsal: "21", nombre: "Joaquín Beroiza", disciplina: "Remo Olímpico", foto: "",
     perfil: "Selección Chilena de Remo 2026",
     logros: [
       "Campeón Sudamericano 4- Juvenil, Chile 2026",
@@ -164,11 +164,15 @@ export default function Portada() {
             <div className="plantel">
               {ATLETAS.map((a) => (
                 <article className="atleta" key={a.dorsal}>
-                  <span className="dorsal" aria-hidden="true">{a.dorsal}</span>
-                  <p className="disciplina">{a.disciplina}</p>
-                  <h4>{a.nombre}</h4>
-                  <p className="perfil">{a.perfil}</p>
-                  <ul>{a.logros.map((l) => <li key={l}>{l}</li>)}</ul>
+                  <div className={`atleta-foto ${a.foto}`} {...(a.foto ? { role: "img", "aria-label": `${a.nombre} en competencia` } : { "aria-hidden": true })}>
+                    <span className="dorsal" aria-hidden="true">{a.dorsal}</span>
+                  </div>
+                  <div className="atleta-txt">
+                    <p className="disciplina">{a.disciplina}</p>
+                    <h4>{a.nombre}</h4>
+                    <p className="perfil">{a.perfil}</p>
+                    <ul>{a.logros.map((l) => <li key={l}>{l}</li>)}</ul>
+                  </div>
                 </article>
               ))}
             </div>
