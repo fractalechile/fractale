@@ -640,3 +640,7 @@ html:has(.fondo-portada),body:has(.fondo-portada){background:transparent}
 .atleta ul{margin:0;padding:16px 0 0;list-style:none;border-top:1px solid rgba(255,255,255,.16)}
 .atleta li{padding:5px 0;font-size:14px;line-height:1.35;color:#e8e8ed}
 @media(max-width:900px){.plantel{grid-template-columns:1fr}}
+
+/* ---------- logo oficial en la portada ---------- */
+.logo-portada{margin:0 auto 26px}
+.logo-portada img{display:block;width:clamp(230px,34vw,440px);height:auto;margin:0 auto}

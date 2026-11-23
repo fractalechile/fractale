@@ -91,7 +91,7 @@ export default function Portada() {
         {/* portada */}
         <section className="hero">
           <div className="wrap">
-            <p className="eyebrow">FRACTALE Sport Management</p>
+            <p className="eyebrow logo-portada"><img src="/assets/fractale-oficial.png" alt="FRACTALE Sport Management" /></p>
             <h1 className="display">El éxito está en el sur.</h1>
             <p className="lead">Profesionalizamos carreras deportivas y llevamos a las marcas a los eventos clave del sur de Chile.</p>
             <div className="ctas">
@@ -197,8 +197,8 @@ export default function Portada() {
             </div>
             <p className="allies-tit">Colaboradores.</p>
             <div className="allies" style={{ marginTop: 24 }}>
-              <article><div className="logo"><img className="l-fthaus" src="/assets/marcas/fthaus.png" alt="FThaus" /></div>
-                <h4>Fthaus</h4><p>Centro clínico y de entrenamiento de vanguardia técnica y metodológica.</p></article>
+              <article><div className="logo"><img className="l-fthaus" src="/assets/marcas/fthaus-oficial.png" alt="FTHAUS" /></div>
+                <h4>FTHAUS</h4><p>Centro clínico y de entrenamiento de vanguardia técnica y metodológica.</p></article>
               <article><div className="logo"><img className="l-redbull" src="/assets/marcas/red-bull.png" alt="Red Bull" /></div>
                 <h4>Red Bull</h4><p>Referente mundial en el apoyo al deporte de alto rendimiento.</p></article>
               <article><div className="logo"><img className="l-oxxean" src="/assets/marcas/oxxean.png" alt="Oxxean" /></div>
