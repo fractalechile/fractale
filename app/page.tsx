@@ -1,5 +1,38 @@
 import EfectosPortada from "./efectos-portada";
 
+const ATLETAS = [
+  {
+    dorsal: "07", nombre: "Francisco Marín Zúñiga", disciplina: "Trail Running",
+    perfil: "Seleccionado Nacional 2025 · 720 pts ITRA",
+    logros: [
+      "1er lugar General, Cochrane Patagonia Trail 2022",
+      "Primer chileno, Paraty Brazil by UTMB 2023",
+      "15° Sudamericano, Mundial de Montaña y Trail 2025",
+      "2° General, Gran Travesía de los Valles 2025",
+    ],
+  },
+  {
+    dorsal: "12", nombre: "Alen Hernández Concha", disciplina: "Karate · Kumite -68 kg",
+    perfil: "Team Chile · Cinturón Negro 1er Dan",
+    logros: [
+      "1er lugar Nacional U21: 2024, 2025 y 2026",
+      "3er lugar Sudamericano: 2023 y 2024",
+      "5° Panamericano U21, Macaé, Brasil 2026",
+      "5 años consecutivos, 1er lugar Zonal (2022–2026)",
+    ],
+  },
+  {
+    dorsal: "21", nombre: "Joaquín Beroiza", disciplina: "Remo Olímpico",
+    perfil: "Selección Chilena de Remo 2026",
+    logros: [
+      "Campeón Sudamericano 4- Juvenil, Chile 2026",
+      "Campeón Sudamericano 8+ Juvenil, Chile 2026",
+      "3er lugar Nacional Remoergómetro 2026",
+      "Reconocimiento al Espíritu Deportivo, Municipalidad de Puerto Montt 2026",
+    ],
+  },
+];
+
 export default function Portada() {
   return (
     <>
@@ -122,6 +155,22 @@ export default function Portada() {
                   <h4>Una marca personal que atrae patrocinio.</h4>
                   <p>Posicionamiento, gestión de prensa, patrocinios y financiamiento privado.</p></div>
               </article>
+            </div>
+
+            <div className="plantel-cabeza">
+              <p className="eyebrow mini">Nuestro equipo</p>
+              <h3 className="title">Atletas FRACTALE.</h3>
+            </div>
+            <div className="plantel">
+              {ATLETAS.map((a) => (
+                <article className="atleta" key={a.dorsal}>
+                  <span className="dorsal" aria-hidden="true">{a.dorsal}</span>
+                  <p className="disciplina">{a.disciplina}</p>
+                  <h4>{a.nombre}</h4>
+                  <p className="perfil">{a.perfil}</p>
+                  <ul>{a.logros.map((l) => <li key={l}>{l}</li>)}</ul>
+                </article>
+              ))}
             </div>
           </div>
         </section>
