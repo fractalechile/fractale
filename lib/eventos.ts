@@ -19,8 +19,7 @@ export const DISTANCIAS_BASE: Distancia[] = [
   { valor: "Acompañante", detalle: "Vine a apoyar" },
 ];
 
-// Si 006_eventos_del_stand.sql todavía no se ejecutó, el stand sigue
-// funcionando con el Giro del Lago, como antes.
+// Respaldo solo para un error de lectura; si el evento está cerrado no se usa.
 const RESPALDO_SLUG = "giro-del-lago-2026";
 const RESPALDO_DISTANCIAS: Distancia[] = [
   { valor: "163 km", detalle: "Giro completo" },
@@ -62,8 +61,10 @@ export async function eventoDelStand(): Promise<EventoStand | null> {
   const { data, error } = await supabaseAdmin
     .from("eventos").select("*").eq("stand_actual", true).eq("activo", true).maybeSingle();
   if (data) return normalizar(data);
-  if (error) console.warn("eventoDelStand:", error.message);
-  return eventoPorSlug(RESPALDO_SLUG);
+  if (!error) return null; // ningún evento abierto: /stand muestra el aviso
+  console.warn("eventoDelStand:", error.message);
+  const respaldo = await eventoPorSlug(RESPALDO_SLUG);
+  return respaldo?.activo ? respaldo : null;
 }
 
 /** "Domingo 22 de noviembre 2026" a partir de "2026-11-22". */

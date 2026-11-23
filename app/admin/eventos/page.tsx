@@ -52,6 +52,15 @@ async function llevarAlStand(datos: FormData) {
   revalidatePath("/stand");
 }
 
+async function guardarDistancias(datos: FormData) {
+  "use server";
+  const distancias = leerDistancias(String(datos.get("distancias") ?? ""));
+  if (!distancias.length) return;
+  await supabaseAdmin.from("eventos").update({ distancias }).eq("id", String(datos.get("id")));
+  revalidatePath("/admin/eventos");
+  revalidatePath("/stand");
+}
+
 async function alternarActivo(datos: FormData) {
   "use server";
   const activo = datos.get("activo") === "1";
@@ -102,7 +111,18 @@ export default async function Eventos({
                 <td><a className="more" href={`/admin/visitas?evento=${e.slug}`}>{e.nombre}</a>
                   <small>{e.lugar ?? ""}</small></td>
                 <td>{fechaLarga(e.fecha)}</td>
-                <td>{e.distancias.map((d) => d.valor).join(" · ")}</td>
+                <td>
+                  {e.distancias.map((d) => d.valor).join(" · ")}
+                  <details className="editar-distancias">
+                    <summary>Editar</summary>
+                    <form action={guardarDistancias}>
+                      <input type="hidden" name="id" value={e.id} />
+                      <textarea name="distancias" rows={5} aria-label={`Distancias de ${e.nombre}`}
+                        defaultValue={e.distancias.map((d) => d.detalle ? `${d.valor} | ${d.detalle}` : d.valor).join("\n")} />
+                      <button className="marca">Guardar</button>
+                    </form>
+                  </details>
+                </td>
                 <td><b>{conteos.get(e.id) ?? 0}</b></td>
                 <td>
                   {e.stand_actual ? <span className="marca on">✓ En el stand</span> : (

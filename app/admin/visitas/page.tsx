@@ -107,7 +107,7 @@ export default async function PanelVisitas({
 }: { searchParams: Promise<{ evento?: string }> }) {
   const { evento: slug } = await searchParams;
   const eventos = await listarEventos();
-  const ev = slug ? await eventoPorSlug(slug) : await eventoDelStand();
+  const ev = slug ? await eventoPorSlug(slug) : (await eventoDelStand()) ?? eventos[0] ?? null;
   if (!ev)
     return (
       <main className="hoja">

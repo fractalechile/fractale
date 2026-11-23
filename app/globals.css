@@ -597,3 +597,7 @@ footer .nota{padding-bottom:16px;border-bottom:1px solid var(--line);margin:0}
 .carpeta-cifras{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .carpeta-cifras b{display:block;font-size:22px}
 .carpeta-cifras span{font-size:11px;color:var(--ink-2)}
+.editar-distancias{margin-top:6px;font-size:12px}
+.editar-distancias summary{cursor:pointer;color:var(--link)}
+.editar-distancias textarea{display:block;width:210px;margin:6px 0;padding:8px;font:inherit;
+  border:1px solid var(--line);border-radius:8px}
