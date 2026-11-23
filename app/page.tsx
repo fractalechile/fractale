@@ -121,7 +121,7 @@ export default function Portada() {
         </section>
 
         {/* acompañamiento 360 */}
-        <section id="atletas" className="gray">
+        <section id="acompanamiento" className="gray">
           <div className="wide">
             <div className="railhead">
               <div>
@@ -157,7 +157,7 @@ export default function Portada() {
               </article>
             </div>
 
-            <div className="plantel-cabeza">
+            <div className="plantel-cabeza" id="atletas">
               <p className="eyebrow mini">Nuestro equipo</p>
               <h3 className="title">Atletas FRACTALE.</h3>
             </div>
