@@ -21,7 +21,7 @@ export default function Terminos() {
         <p>
           FRACTALE Sport Management, con domicilio en Puerto Montt, Región de Los Lagos, Chile,
           es el responsable del tratamiento de los datos personales recogidos en este sitio.
-          Contacto: <a href="mailto:Fractalechile@gmail.com">Fractalechile@gmail.com</a>.
+          Contacto: <a href="mailto:contacto@fractalechile.com">contacto@fractalechile.com</a>.
         </p>
 
         <h2>2. Términos de inscripción</h2>
@@ -70,7 +70,7 @@ export default function Terminos() {
           Conforme a la Ley 19.628 y a la Ley 21.719 sobre protección de datos personales, puedes
           solicitar acceso, rectificación, supresión, oposición y portabilidad de tus datos,
           y retirar tu consentimiento en cualquier momento, escribiendo a{" "}
-          <a href="mailto:Fractalechile@gmail.com">Fractalechile@gmail.com</a>.
+          <a href="mailto:contacto@fractalechile.com">contacto@fractalechile.com</a>.
           Para dejar de recibir correos basta el enlace de baja incluido en cada envío.
         </p>
 
