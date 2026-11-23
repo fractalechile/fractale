@@ -248,6 +248,7 @@ export default function Portada() {
           <div className="wide">
             <div className="evento-marcas">
               <img className="evento-fondo" src="/assets/fotos/puerto-montt.jpg" alt="Vista de Puerto Montt y su bahía" />
+              <div className="evento-grid">
               <div className="evento-txt">
                 <p className="k">Eventos y marcas</p>
                 <h2>Tu marca, donde el sur se encuentra.</h2>
@@ -257,6 +258,7 @@ export default function Portada() {
               <div className="evento-logos">
                 <p>Marcas que trabajan con nosotros</p>
                 <div>{MARCAS.map((m) => <span key={m.nombre}><img src={m.logo} alt={m.nombre} /></span>)}</div>
+              </div>
               </div>
             </div>
           </div>
