@@ -22,7 +22,7 @@ const ATLETAS = [
     ],
   },
   {
-    dorsal: "21", nombre: "Joaquín Beroiza", disciplina: "Remo Olímpico", foto: "",
+    dorsal: "21", nombre: "Joaquín Beroiza", disciplina: "Remo Olímpico", foto: "f-joaquin",
     perfil: "Selección Chilena de Remo 2026",
     logros: [
       "Campeón Sudamericano 4- Juvenil, Chile 2026",

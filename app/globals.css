@@ -630,6 +630,7 @@ html:has(.fondo-portada),body:has(.fondo-portada){background:transparent}
 .atleta-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.28),transparent 42%,rgba(17,17,17,.75))}
 .f-francisco{background-image:url("/assets/fotos/trail.jpg");background-size:200% auto;background-position:59% 17%}
 .f-alen{background-image:url("/assets/fotos/karate.jpg");background-size:cover;background-position:center 16%}
+.f-joaquin{background-image:url("/assets/fotos/joaquin.jpg");background-size:cover;background-position:center 22%}
 .atleta-txt{padding:22px 28px 28px}
 .atleta .dorsal{position:absolute;z-index:1;top:8px;right:16px;font-size:58px;font-weight:700;line-height:1;
   letter-spacing:-.04em;color:rgba(255,255,255,.88)}
