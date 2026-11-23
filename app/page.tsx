@@ -33,6 +33,26 @@ const ATLETAS = [
   },
 ];
 
+const MARCAS = [
+  { logo: "/assets/marcas/patagonia-medical-hd.png", nombre: "Patagonia Medical" },
+  { logo: "/assets/marcas/under-armour.png", nombre: "Under Armour" },
+  { logo: "/assets/marcas/winkler-nutrition.png", nombre: "Winkler Nutrition" },
+  { logo: "/assets/marcas/fthaus-oficial.png", nombre: "FTHAUS" },
+  { logo: "/assets/marcas/red-bull.png", nombre: "Red Bull" },
+  { logo: "/assets/marcas/oxxean.png", nombre: "Oxxean" },
+  { logo: "/assets/marcas/force-human.png", nombre: "Force Human Performance System" },
+];
+
+const FORCE = [
+  ["Essentials", "Multivitamínico"],
+  ["Base", "Creatina monohidrato"],
+  ["Focus", "Nootrópico"],
+  ["Training", "Pre-workout"],
+  ["Reset", "Recuperación"],
+];
+
+const WHATSAPP_FORCE = "https://wa.me/56958991823?text=hola%20fractale!%20quiero%20cotizar%20mis%20suplementos";
+
 export default function Portada() {
   return (
     <>
@@ -123,38 +143,38 @@ export default function Portada() {
         {/* acompañamiento 360 */}
         <section id="acompanamiento" className="gray">
           <div className="wide">
-            <div className="railhead">
-              <div>
-                <p className="eyebrow mini">Acompañamiento integral 360°</p>
-                <h2 className="headline">Descentralizando la élite.</h2>
-                <p className="lead">Liberamos al atleta de la carga operativa, administrativa y médica para que ponga toda su energía en rendir y ganar.</p>
-              </div>
-              <div className="arrows">
-                <button className="arrow" data-rail="prev" aria-label="Anterior">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M15 5l-7 7 7 7" /></svg></button>
-                <button className="arrow" data-rail="next" aria-label="Siguiente">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M9 5l7 7-7 7" /></svg></button>
-              </div>
+            <div className="srv-cabeza">
+              <p className="eyebrow mini">Acompañamiento integral 360°</p>
+              <h2 className="headline">Descentralizando la élite.</h2>
+              <p className="lead">Liberamos al atleta de la carga operativa, administrativa y médica para que ponga toda su energía en rendir y ganar.</p>
             </div>
-            <div className="rail" id="rail">
-              <article className="card">
-                <div className="art foto f-karate" role="img" aria-label="Deportista de karate en competencia"></div>
-                <div className="txt"><p className="k">Performance</p>
-                  <h4>Entrenar con estándar internacional.</h4>
-                  <p>Programas de alta exigencia, planificación técnica y monitoreo de cargas.</p></div>
+            <div className="servicios">
+              <article className="srv-grande">
+                <img src="/assets/fotos/karate.jpg" alt="Deportista de karate en competencia" />
+                <div>
+                  <p className="k">01 · Performance</p>
+                  <h3>Entrenar con estándar internacional.</h3>
+                  <p>Programas de alta exigencia, planificación técnica y monitoreo de cargas.</p>
+                </div>
               </article>
-              <article className="card">
-                <div className="art foto f-patagonia" role="img" aria-label="Centro médico Patagonia Medical"></div>
-                <div className="txt"><p className="k">Salud y bienestar</p>
-                  <h4>Medicina y nutrición que aceleran la recuperación.</h4>
-                  <p>Cobertura médica especializada y nutrición deportiva orientada al rendimiento.</p></div>
-              </article>
-              <article className="card">
-                <div className="art foto f-ua" role="img" aria-label="Marca Under Armour junto a FRACTALE"></div>
-                <div className="txt"><p className="k">Marketing y gestión comercial</p>
-                  <h4>Una marca personal que atrae patrocinio.</h4>
-                  <p>Posicionamiento, gestión de prensa, patrocinios y financiamiento privado.</p></div>
-              </article>
+              <div className="srv-columna">
+                <article className="srv-lado">
+                  <img className="srv-patagonia" src="/assets/fotos/patagonia.jpg" alt="Centro médico Patagonia Medical" />
+                  <div>
+                    <p className="k">02 · Salud y bienestar</p>
+                    <h3>Medicina y nutrición que aceleran la recuperación.</h3>
+                    <p>Cobertura médica especializada y nutrición deportiva orientada al rendimiento.</p>
+                  </div>
+                </article>
+                <article className="srv-lado inverso">
+                  <div>
+                    <p className="k">03 · Marketing y gestión comercial</p>
+                    <h3>Una marca personal que atrae patrocinio.</h3>
+                    <p>Posicionamiento, gestión de prensa, patrocinios y financiamiento privado.</p>
+                  </div>
+                  <img className="srv-ua" src="/assets/fotos/under-armour.jpg" alt="Marca Under Armour junto a FRACTALE" />
+                </article>
+              </div>
             </div>
 
             <div className="plantel-cabeza" id="atletas">
@@ -188,7 +208,7 @@ export default function Portada() {
               <p className="lead muted" style={{ maxWidth: "34ch", marginLeft: "auto", marginRight: "auto" }}>Para que nuestros atletas entrenen con los mejores estándares del país.</p>
             </div>
             <div className="allies">
-              <article><div className="logo"><img className="l-patagonia" src="/assets/marcas/patagonia-medical.png" alt="Patagonia Medical" /></div>
+              <article><div className="logo"><img className="l-patagonia" src="/assets/marcas/patagonia-medical-hd.png" alt="Patagonia Medical" /></div>
                 <h4>Patagonia Medical</h4><p>Laboratorio y centro médico integral especializado en alta competencia.</p></article>
               <article><div className="logo"><img className="l-ua" src="/assets/marcas/under-armour.png" alt="Under Armour" /></div>
                 <h4>Under Armour</h4><p>Indumentaria e ingeniería deportiva que viste y equipa a nuestra nómina.</p></article>
@@ -204,6 +224,18 @@ export default function Portada() {
               <article><div className="logo"><img className="l-oxxean" src="/assets/marcas/oxxean.png" alt="Oxxean" /></div>
                 <h4>Oxxean</h4><p>Empresa del sur que respalda a nuestros atletas en su propio territorio.</p></article>
             </div>
+            <article className="force" aria-label="Distribuidores oficiales de Force Human">
+              <div className="force-txt">
+                <p className="k">Distribuidores oficiales</p>
+                <h3><img src="/assets/marcas/force-human.png" alt="Force Human Performance System" /></h3>
+                <p>Somos distribuidores oficiales de Force Human, la marca de suplementos de Sammis Reyes.</p>
+              </div>
+              <a className="btn btn-white" href={WHATSAPP_FORCE} target="_blank" rel="noopener">Consultar por suplementos</a>
+              <img className="force-linea" src="/assets/fotos/force-linea.jpg" alt="Línea de suplementos Force: Essentials, Creatina Base, Focus, Pre-Workout Training y Reset" />
+              <div className="force-productos">
+                {FORCE.map(([n, d]) => <div key={n}><b>{n}</b><span>{d}</span></div>)}
+              </div>
+            </article>
             <div className="pertenencia">
               <b>Sentido de pertenencia.</b>
               <p>Atletas orgullosos de su origen, respaldados por una estructura que nada tiene que envidiar a las grandes capitales latinoamericanas.</p>
@@ -214,21 +246,17 @@ export default function Portada() {
         {/* eventos */}
         <section id="eventos" style={{ paddingTop: 0 }}>
           <div className="wide">
-            <div className="bigtile">
-              <div className="art foto f-meta" role="img" aria-label="Largada de la corrida, arco de meta"></div>
-              <div>
-                <p className="eyebrow mini" style={{ color: "rgba(255,255,255,.8)" }}>Eventos deportivos de alto estándar</p>
-                <h2 className="title">Conexión real y territorio.</h2>
-                <p className="lead muted" style={{ maxWidth: "36ch", fontSize: "clamp(17px,1.8vw,21px)" }}>En el sur el deporte es identidad comunitaria. Convertimos cada evento en una plataforma donde las marcas son protagonistas, no pancartas.</p>
-                <div className="ctas" style={{ justifyContent: "flex-start" }}>
-                  <a className="btn btn-white" href="/inscripcion">Inscríbete a la Media Maratón</a>
-                  <a className="btn btn-line" href="#contacto">Sumar mi marca a un evento</a>
-                </div>
+            <div className="evento-marcas">
+              <img className="evento-fondo" src="/assets/fotos/puerto-montt.jpg" alt="Vista de Puerto Montt y su bahía" />
+              <div className="evento-txt">
+                <p className="k">Eventos y marcas</p>
+                <h2>Tu marca, donde el sur se encuentra.</h2>
+                <p>Llevamos a tu marca a los eventos deportivos del sur de Chile, con presencia real en cada punto de contacto: recuperación, race village, premiación y contenido.</p>
+                <a className="btn btn-white" href="#contacto">Sumar mi marca a un evento</a>
               </div>
-              <div className="trio">
-                <div><b>Producción e inmersión</b><span>Trazados, activaciones y logística con estándares internacionales.</span></div>
-                <div><b>Activación de activos</b><span>La marca en cada punto de contacto: recuperación, race village, premiación y contenido.</span></div>
-                <div><b>Impacto orgánico</b><span>Vínculos profundos con audiencias comprometidas con el bienestar y la vida al aire libre.</span></div>
+              <div className="evento-logos">
+                <p>Marcas que trabajan con nosotros</p>
+                <div>{MARCAS.map((m) => <span key={m.nombre}><img src={m.logo} alt={m.nombre} /></span>)}</div>
               </div>
             </div>
           </div>
@@ -266,13 +294,9 @@ export default function Portada() {
               <p className="lead muted">Competencias, eventos y trabajo con marcas.</p>
               <div className="ctas"><a className="more" href="https://instagram.com/fractale.cl" target="_blank" rel="noopener">Seguir a @fractale.cl</a></div>
             </div>
-            <div className="galeria">
-              <a href="https://instagram.com/fractale.cl" target="_blank" rel="noopener" aria-label="Podio de nuestras deportistas, en Instagram">
-                <span className="ig">@fractale.cl</span><div className="foto f-podio"></div></a>
+            <div className="galeria una">
               <a href="https://instagram.com/fractale.cl" target="_blank" rel="noopener" aria-label="Trail de 65 kilómetros, en Instagram">
                 <span className="ig">@fractale.cl</span><div className="foto f-trail"></div></a>
-              <a href="https://instagram.com/fractale.cl" target="_blank" rel="noopener" aria-label="Evento de fútbol gestionado por FRACTALE, en Instagram">
-                <span className="ig">@fractale.cl</span><div className="foto f-futbol"></div></a>
             </div>
           </div>
         </section>
