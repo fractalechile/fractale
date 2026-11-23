@@ -76,7 +76,7 @@ export default function Portada() {
             <a href="#contacto">Contacto</a>
             <a href="/panel.html">Panel del equipo</a>
           </div>
-          <a className="btn btn-blue btn-sm" href={MEDIA_MARATON} target="_blank" rel="noopener">Inscríbete</a>
+          <a className="btn btn-blue btn-sm nav-inscribete" href={MEDIA_MARATON} target="_blank" rel="noopener">Inscríbete a la Media Maratón de los Ulmos</a>
           <button className="icon burger" id="burger" aria-label="Menú" aria-expanded="false">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               strokeWidth="1.7" strokeLinecap="round" aria-hidden="true"><path d="M4 9h16M4 15h16" /></svg>
@@ -92,15 +92,24 @@ export default function Portada() {
         <a href="#terreno">En terreno</a>
         <a href="#contacto">Contacto</a>
         <hr />
-        <a className="chico" href={MEDIA_MARATON} target="_blank" rel="noopener">Inscríbete a la Media Maratón</a>
+        <a className="chico" href={MEDIA_MARATON} target="_blank" rel="noopener">Inscríbete a la Media Maratón de los Ulmos</a>
         <a className="chico" href="/panel.html">Panel del equipo</a>
         <a className="chico" href="https://instagram.com/fractale.cl" target="_blank" rel="noopener">@fractale.cl</a>
       </div>
 
-      <div className="ribbon">
-        Media Maratón Internacional Ruta de los Ulmos: gestión y producción de eventos de alto estándar.
-        {" "}<a className="more" href={MEDIA_MARATON} target="_blank" rel="noopener">Inscríbete</a>
-      </div>
+      <section className="mm-franja" aria-label="Estaremos presentes en la Media Maratón de los Ulmos, 14 de febrero de 2027">
+        <div className="mm-cinta" aria-hidden="true">
+          <div>
+            {Array.from({ length: 12 }, (_, i) => (
+              <span key={i}>Estaremos presentes en la Media Maratón de los Ulmos <b>14 Febrero 2027</b> <i>•</i></span>
+            ))}
+          </div>
+        </div>
+        <div className="mm-accion">
+          <img src="/assets/marcas/media-maraton-ulmos.png" alt="Media Maratón Ruta de los Ulmos" />
+          <a className="btn btn-white" href={MEDIA_MARATON} target="_blank" rel="noopener">Inscríbete a la Media Maratón de los Ulmos</a>
+        </div>
+      </section>
 
       <main id="top">
 
@@ -111,7 +120,6 @@ export default function Portada() {
             <h1 className="display">El éxito está en el sur.</h1>
             <p className="lead">Profesionalizamos carreras deportivas y llevamos a las marcas a los eventos clave del sur de Chile.</p>
             <div className="ctas">
-              <a className="btn btn-blue" href={MEDIA_MARATON} target="_blank" rel="noopener">Inscríbete</a>
               <a className="btn btn-line" href={AGENDAR}>Agendar reunión</a>
               <a className="btn btn-line" href="#marcas">Propuesta para marcas</a>
             </div>
@@ -343,7 +351,7 @@ export default function Portada() {
               <a href="/panel.html">Médicos</a><a href="/panel.html">Nutricionistas</a></div>
             <div><h5>FRACTALE</h5>
               <a href="#top">Quiénes somos</a>
-              <a href={MEDIA_MARATON} target="_blank" rel="noopener">Inscripciones</a>
+              <a href={MEDIA_MARATON} target="_blank" rel="noopener">Inscríbete a la Media Maratón de los Ulmos</a>
               <a href="https://instagram.com/fractale.cl" target="_blank" rel="noopener">Instagram</a>
               <a href="#contacto">Contacto</a></div>
             <div><h5>Dónde estamos</h5>
