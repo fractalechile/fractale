@@ -51,6 +51,8 @@ const FORCE = [
   ["Reset", "Recuperación"],
 ];
 
+const MEDIA_MARATON = "https://www.mediamaratonrutadelosulmos.cl/";
+const AGENDAR = "mailto:contacto@fractalechile.com?subject=Agendar%20reuni%C3%B3n%20con%20FRACTALE";
 const WHATSAPP_FORCE = "https://wa.me/56958991823?text=hola%20fractale!%20quiero%20cotizar%20mis%20suplementos";
 
 export default function Portada() {
@@ -74,12 +76,7 @@ export default function Portada() {
             <a href="#contacto">Contacto</a>
             <a href="/panel.html">Panel del equipo</a>
           </div>
-          <a className="btn btn-blue btn-sm" href="/inscripcion">Inscríbete</a>
-          <a className="icon" href="/app.html" aria-label="Entrar a mi cuenta">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              strokeWidth="1.7" aria-hidden="true"><circle cx="12" cy="8.5" r="4" />
-              <path d="M4.5 21c.8-4 3.9-6 7.5-6s6.7 2 7.5 6" /></svg>
-          </a>
+          <a className="btn btn-blue btn-sm" href={MEDIA_MARATON} target="_blank" rel="noopener">Inscríbete</a>
           <button className="icon burger" id="burger" aria-label="Menú" aria-expanded="false">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               strokeWidth="1.7" strokeLinecap="round" aria-hidden="true"><path d="M4 9h16M4 15h16" /></svg>
@@ -95,15 +92,14 @@ export default function Portada() {
         <a href="#terreno">En terreno</a>
         <a href="#contacto">Contacto</a>
         <hr />
-        <a className="chico" href="/inscripcion">Inscríbete a la Media Maratón</a>
-        <a className="chico" href="/app.html">Soy deportista</a>
+        <a className="chico" href={MEDIA_MARATON} target="_blank" rel="noopener">Inscríbete a la Media Maratón</a>
         <a className="chico" href="/panel.html">Panel del equipo</a>
         <a className="chico" href="https://instagram.com/fractale.cl" target="_blank" rel="noopener">@fractale.cl</a>
       </div>
 
       <div className="ribbon">
         Media Maratón Internacional Ruta de los Ulmos: gestión y producción de eventos de alto estándar.
-        {" "}<a className="more" href="/inscripcion">Inscríbete</a>
+        {" "}<a className="more" href={MEDIA_MARATON} target="_blank" rel="noopener">Inscríbete</a>
       </div>
 
       <main id="top">
@@ -115,8 +111,8 @@ export default function Portada() {
             <h1 className="display">El éxito está en el sur.</h1>
             <p className="lead">Profesionalizamos carreras deportivas y llevamos a las marcas a los eventos clave del sur de Chile.</p>
             <div className="ctas">
-              <a className="btn btn-blue" href="/inscripcion">Inscríbete</a>
-              <a className="btn btn-line" href="#contacto">Agendar reunión</a>
+              <a className="btn btn-blue" href={MEDIA_MARATON} target="_blank" rel="noopener">Inscríbete</a>
+              <a className="btn btn-line" href={AGENDAR}>Agendar reunión</a>
               <a className="btn btn-line" href="#marcas">Propuesta para marcas</a>
             </div>
           </div>
@@ -303,19 +299,17 @@ export default function Portada() {
           </div>
         </section>
 
-        {/* dos entradas */}
-        <div className="duo">
-          <article className="tile light">
-            <h3 className="title">Soy deportista</h3>
-            <p>Entrena, registra y deja que tu equipo siga tu progreso.</p>
-            <div className="ctas"><a className="btn btn-blue btn-sm" href="/app.html">Entrar a la plataforma</a></div>
-            <div className="glyph"><img src="/assets/symbol-light.png" alt="" aria-hidden="true" /></div>
-          </article>
-          <article className="tile dark">
-            <h3 className="title">Soy una marca</h3>
-            <p>Integre sus objetivos comerciales en nuestra estructura.</p>
-            <div className="ctas"><a className="btn btn-blue btn-sm" href="#contacto">Agendar reunión</a></div>
-            <div className="glyph"><img src="/assets/symbol-dark.png" alt="" aria-hidden="true" /></div>
+        {/* deportistas y marcas */}
+        <div className="unete-zona">
+          <article className="unete">
+            <div className="unete-in">
+              <img src="/assets/symbol-dark.png" alt="" aria-hidden="true" />
+              <div>
+                <h2>Soy deportista o marca</h2>
+                <p>Conversemos cómo impulsar tu carrera o integrar tus objetivos comerciales en nuestra estructura.</p>
+              </div>
+              <a className="btn btn-white" href={AGENDAR}>Agendar reunión</a>
+            </div>
           </article>
         </div>
 
@@ -340,17 +334,16 @@ export default function Portada() {
           <div className="cols">
             <div><h5>Atletas</h5>
               <a href="#acompanamiento">Acompañamiento 360°</a><a href="#acompanamiento">Performance</a>
-              <a href="#acompanamiento">Salud y bienestar</a><a href="#acompanamiento">Marketing y gestión</a>
-              <a href="/app.html">Plataforma del deportista</a></div>
+              <a href="#acompanamiento">Salud y bienestar</a><a href="#acompanamiento">Marketing y gestión</a></div>
             <div><h5>Marcas</h5>
               <a href="#marcas">Propuesta B2B</a><a href="#eventos">Eventos</a>
-              <a href="#alianzas">Alianzas</a><a href="#contacto">Agendar reunión</a></div>
+              <a href="#alianzas">Alianzas</a><a href={AGENDAR}>Agendar reunión</a></div>
             <div><h5>Equipo</h5>
               <a href="/panel.html">Panel</a><a href="/panel.html">Entrenadores</a>
               <a href="/panel.html">Médicos</a><a href="/panel.html">Nutricionistas</a></div>
             <div><h5>FRACTALE</h5>
               <a href="#top">Quiénes somos</a>
-              <a href="/inscripcion">Inscripciones</a>
+              <a href={MEDIA_MARATON} target="_blank" rel="noopener">Inscripciones</a>
               <a href="https://instagram.com/fractale.cl" target="_blank" rel="noopener">Instagram</a>
               <a href="#contacto">Contacto</a></div>
             <div><h5>Dónde estamos</h5>

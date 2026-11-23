@@ -722,3 +722,92 @@ html:has(.fondo-portada),body:has(.fondo-portada){background:transparent}
 /* galería con una sola foto mientras llegan las nuevas */
 .galeria.una{grid-template-columns:minmax(0,420px);justify-content:center}
 @media(max-width:760px){.galeria.una a:last-child{display:block}}
+
+/* ---------- landing compacta ---------- */
+.fondo-portada ~ main > section{padding-top:clamp(36px,4.4vw,60px);padding-bottom:clamp(36px,4.4vw,60px)}
+.fondo-portada ~ main .hero{min-height:min(640px,76svh);padding:36px 0}
+.fondo-portada ~ main .manifest p{margin-top:16px}
+.fondo-portada ~ main .manifest .quote{margin-top:26px !important}
+.fondo-portada ~ main .allies{margin-top:26px}
+.fondo-portada ~ main .allies article{padding:24px 26px}
+.fondo-portada ~ main .allies .logo{margin-bottom:14px}
+.fondo-portada ~ main .allies-tit{margin-top:30px}
+.fondo-portada ~ main .pertenencia{margin-top:30px}
+.fondo-portada ~ main .force{margin-top:22px}
+.fondo-portada ~ main .bento{margin-top:26px;gap:14px}
+.fondo-portada ~ main .bento .b{min-height:0;padding:26px 28px}
+.fondo-portada ~ main .galeria{margin-top:24px}
+.fondo-portada ~ main .galeria.una{grid-template-columns:minmax(0,320px)}
+.fondo-portada ~ main .ctas{margin-top:20px}
+.srv-cabeza{margin-bottom:22px}
+.plantel-cabeza{margin:30px 0 16px}
+.srv-grande{min-height:520px}
+.srv-lado img{min-height:250px}
+.evento-marcas{min-height:0;padding:28px}
+
+/* logos en recuadros */
+.evento-logos p{font-size:17px;line-height:1.2;text-align:center}
+.evento-logos>div{gap:12px;align-items:stretch}
+.evento-logos span{height:78px;box-sizing:border-box;padding:12px 16px;border-radius:14px;background:var(--gray)}
+.evento-logos span:last-child{grid-column:1/-1}
+.evento-logos img{max-height:56px}
+
+/* deportistas y marcas: recuadro animado */
+.unete-zona{padding:0 22px clamp(28px,3vw,40px);background:rgba(255,255,255,.6)}
+.unete{position:relative;isolation:isolate;max-width:940px;margin:0 auto;padding:2px;overflow:hidden;border-radius:24px;
+  background:#111;box-shadow:0 14px 36px rgba(0,0,0,.2);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.unete:hover{transform:translateY(-3px)}
+.unete::before{content:"";position:absolute;z-index:-1;left:50%;top:50%;width:150%;aspect-ratio:1;
+  background:conic-gradient(from 0deg,transparent 0 58%,#0071e3 72%,#7fd4ff 84%,#fff 90%,transparent 96%);
+  transform:translate(-50%,-50%);animation:unete-gira 5.5s linear infinite}
+@keyframes unete-gira{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.unete-in{position:relative;overflow:hidden;display:flex;align-items:center;gap:24px;padding:22px 28px;border-radius:22px;background:#0b0b0c;color:#f5f5f7}
+.unete-in::after{content:"";position:absolute;top:0;bottom:0;left:-35%;width:28%;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(127,212,255,.16),transparent);transform:skewX(-18deg);animation:unete-brillo 4.8s ease-in-out infinite}
+@keyframes unete-brillo{0%,45%{left:-35%}100%{left:125%}}
+.unete-in img{flex:none;width:58px;height:auto;animation:unete-flota 3.6s ease-in-out infinite}
+@keyframes unete-flota{50%{transform:translateY(-5px) scale(1.04)}}
+.unete-in>div{flex:1 1 auto;min-width:0}
+.unete-in h2{margin:0;font-size:clamp(22px,2.4vw,30px);font-weight:600;line-height:1.1}
+.unete-in p{margin:5px 0 0;font-size:16px;line-height:1.3;color:#c7c7cc}
+.unete-in .btn{position:relative;z-index:1;flex:none}
+@media(prefers-reduced-motion:reduce){.unete::before,.unete-in::after,.unete-in img{animation:none}}
+
+@media(max-width:734px){
+  .fondo-portada ~ main .hero{min-height:0;padding:44px 0}
+  .fondo-portada ~ main .allies{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .fondo-portada ~ main .allies article{padding:16px 14px;border-radius:18px}
+  .fondo-portada ~ main .allies .logo{height:42px;margin-bottom:10px}
+  .fondo-portada ~ main .allies .logo img{max-width:100%;max-height:42px}
+  .fondo-portada ~ main .allies h4{font-size:16px}
+  .fondo-portada ~ main .allies p{font-size:13px;line-height:1.3}
+  .fondo-portada ~ main .bento{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .fondo-portada ~ main .bento .b,.fondo-portada ~ main .bento .b.w3{grid-column:auto;padding:16px 14px;border-radius:18px;gap:7px}
+  .fondo-portada ~ main .bento .b:last-child{grid-column:1/-1}
+  .fondo-portada ~ main .bento b{font-size:17px}
+  .fondo-portada ~ main .bento p{margin-top:0;font-size:13px;line-height:1.3}
+  .force-productos{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .plantel{gap:12px}
+  .atleta-foto{aspect-ratio:16/10}
+  .atleta-txt{padding:16px 18px 18px}
+  .srv-grande{min-height:430px;padding:24px}
+  .unete-in{flex-wrap:wrap;gap:12px 14px;padding:18px}
+  .unete-in img{width:42px}
+  .unete-in>div{flex:1 1 200px}
+  .unete-in .btn{flex:1 1 100%}
+}
+@media(max-width:560px){
+  .srv-lado{grid-template-columns:116px minmax(0,1fr)}
+  .srv-lado.inverso{grid-template-columns:minmax(0,1fr) 116px}
+  .srv-lado.inverso img{grid-row:auto}
+  .srv-lado img{height:100%;min-height:210px;aspect-ratio:auto}
+  .srv-lado>div{padding:16px 14px}
+  .srv-lado h3{font-size:19px}
+  .srv-lado p:last-child{font-size:13px;line-height:1.3}
+  .evento-marcas{padding:10px}
+  .evento-logos p{margin-bottom:8px;font-size:12px}
+  .evento-logos>div{grid-template-columns:minmax(0,1fr);gap:5px}
+  .evento-logos span{height:44px;padding:5px 8px;border-radius:9px}
+  .evento-logos span:last-child{grid-column:auto}
+  .evento-logos img{max-height:34px}
+}
