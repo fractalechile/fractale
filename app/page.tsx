@@ -326,7 +326,7 @@ export default function Portada() {
             <h2 className="headline">El deporte en el sur cambió. Sea parte del liderazgo.</h2>
             <p className="lead">Las marcas pioneras no esperan a que los mercados se consoliden: los construyen.</p>
             <div className="ctas">
-              <a className="btn btn-blue" href="mailto:Fractalechile@gmail.com?subject=Reuni%C3%B3n%20de%20alineaci%C3%B3n%20estrat%C3%A9gica">Escribir a FRACTALE</a>
+              <a className="btn btn-blue" href="mailto:contacto@fractalechile.com?subject=Reuni%C3%B3n%20de%20alineaci%C3%B3n%20estrat%C3%A9gica">Escribir a FRACTALE</a>
               <a className="btn btn-line" href="https://instagram.com/fractale.cl" target="_blank" rel="noopener">Seguir en Instagram</a>
             </div>
           </div>
@@ -336,7 +336,7 @@ export default function Portada() {
 
       <footer>
         <div className="wrap">
-          <p className="nota">FRACTALE Sport Management trabaja con atletas, eventos y marcas desde Puerto Montt, Región de Los Lagos, Chile. Escríbenos a <a href="mailto:Fractalechile@gmail.com" style={{ color: "var(--link)" }}>Fractalechile@gmail.com</a>.</p>
+          <p className="nota">FRACTALE Sport Management trabaja con atletas, eventos y marcas desde Puerto Montt, Región de Los Lagos, Chile. Escríbenos a <a href="mailto:contacto@fractalechile.com" style={{ color: "var(--link)" }}>contacto@fractalechile.com</a>.</p>
           <div className="cols">
             <div><h5>Atletas</h5>
               <a href="#acompanamiento">Acompañamiento 360°</a><a href="#acompanamiento">Performance</a>
