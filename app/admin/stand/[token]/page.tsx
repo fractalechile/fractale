@@ -63,7 +63,7 @@ export default async function Stand({ params }: { params: Promise<{ token: strin
           </form>
         );
       })}
-      <p><a href="/admin">← Volver al panel</a></p>
+      <p><a href="/admin/inscritos">← Volver a inscritos</a></p>
     </main>
   );
 }

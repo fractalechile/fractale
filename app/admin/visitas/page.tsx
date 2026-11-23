@@ -139,6 +139,7 @@ export default async function PanelVisitas({
   return (
     <main className="panel">
       <nav className="eventos-nav" aria-label="Eventos">
+        <a href="/admin" className="gestion">← Carpetas</a>
         {eventos.map((e) => (
           <a key={e.slug} href={`/admin/visitas?evento=${e.slug}`}
             className={e.slug === ev.slug ? "on" : undefined}>
@@ -153,7 +154,10 @@ export default async function PanelVisitas({
           <p className="eyebrow mini">{ev.lugar ? `${ev.lugar} · ` : ""}{fechaLarga(ev.fecha)}</p>
           <h1 className="title">{ev.nombre}</h1>
         </div>
-        <a className="btn btn-line btn-sm" href={`/api/admin/export-stand?evento=${ev.slug}`}>Descargar CSV</a>
+        <div className="ctas" style={{ margin: 0 }}>
+          <a className="btn btn-line btn-sm" href={`/admin/inscritos?evento=${ev.slug}`}>Inscritos</a>
+          <a className="btn btn-line btn-sm" href={`/api/admin/export-stand?evento=${ev.slug}`}>Descargar CSV</a>
+        </div>
       </header>
 
       <section className="cifras">

@@ -83,7 +83,7 @@ export default async function Eventos({
           <p className="eyebrow mini">Stand de Fractale Recovery</p>
           <h1 className="title">Eventos</h1>
         </div>
-        <a className="btn btn-line btn-sm" href="/admin/visitas">Ver visitas</a>
+        <a className="btn btn-line btn-sm" href="/admin">← Carpetas</a>
       </header>
 
       <p className="ayuda-panel">

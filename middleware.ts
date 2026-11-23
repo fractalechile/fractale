@@ -4,8 +4,12 @@ import { NextRequest, NextResponse } from "next/server";
 export function middleware(req: NextRequest) {
   const header = req.headers.get("authorization");
   if (header?.startsWith("Basic ")) {
-    const [user, pass] = atob(header.slice(6)).split(":");
-    if (user === process.env.ADMIN_USER && pass === process.env.ADMIN_PASS) {
+    const credenciales = atob(header.slice(6));
+    const corte = credenciales.indexOf(":"); // la contraseña puede contener ":"
+    const user = credenciales.slice(0, corte);
+    const pass = credenciales.slice(corte + 1);
+    const { ADMIN_USER, ADMIN_PASS } = process.env;
+    if (corte > 0 && ADMIN_USER && ADMIN_PASS && user === ADMIN_USER && pass === ADMIN_PASS) {
       return NextResponse.next();
     }
   }
