@@ -313,8 +313,8 @@ export default function Portada() {
           <p className="nota">FRACTALE Sport Management trabaja con atletas, eventos y marcas desde Puerto Montt, Región de Los Lagos, Chile. Escríbenos a <a href="mailto:Fractalechile@gmail.com" style={{ color: "var(--link)" }}>Fractalechile@gmail.com</a>.</p>
           <div className="cols">
             <div><h5>Atletas</h5>
-              <a href="#atletas">Acompañamiento 360°</a><a href="#atletas">Performance</a>
-              <a href="#atletas">Salud y bienestar</a><a href="#atletas">Marketing y gestión</a>
+              <a href="#acompanamiento">Acompañamiento 360°</a><a href="#acompanamiento">Performance</a>
+              <a href="#acompanamiento">Salud y bienestar</a><a href="#acompanamiento">Marketing y gestión</a>
               <a href="/app.html">Plataforma del deportista</a></div>
             <div><h5>Marcas</h5>
               <a href="#marcas">Propuesta B2B</a><a href="#eventos">Eventos</a>
