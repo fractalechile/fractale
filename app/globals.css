@@ -749,7 +749,6 @@ html:has(.fondo-portada),body:has(.fondo-portada){background:transparent}
 .evento-logos p{font-size:17px;line-height:1.2;text-align:center}
 .evento-logos>div{gap:12px;align-items:stretch}
 .evento-logos span{height:78px;box-sizing:border-box;padding:12px 16px;border-radius:14px;background:var(--gray)}
-.evento-logos span:last-child{grid-column:1/-1}
 .evento-logos img{max-height:56px}
 
 /* deportistas y marcas: recuadro animado */
@@ -808,7 +807,6 @@ html:has(.fondo-portada),body:has(.fondo-portada){background:transparent}
   .evento-logos p{margin-bottom:8px;font-size:12px}
   .evento-logos>div{grid-template-columns:minmax(0,1fr);gap:5px}
   .evento-logos span{height:44px;padding:5px 8px;border-radius:9px}
-  .evento-logos span:last-child{grid-column:auto}
   .evento-logos img{max-height:34px}
 }
 

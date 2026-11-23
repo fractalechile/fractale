@@ -41,6 +41,7 @@ const MARCAS = [
   { logo: "/assets/marcas/red-bull.png", nombre: "Red Bull" },
   { logo: "/assets/marcas/oxxean.png", nombre: "Oxxean" },
   { logo: "/assets/marcas/force-human.png", nombre: "Force Human Performance System" },
+  { logo: "/assets/marcas/papa-johns.png", nombre: "Papa Johns" },
 ];
 
 const FORCE = [
@@ -52,7 +53,8 @@ const FORCE = [
 ];
 
 const MEDIA_MARATON = "https://www.mediamaratonrutadelosulmos.cl/";
-const AGENDAR = "mailto:contacto@fractalechile.com?subject=Agendar%20reuni%C3%B3n%20con%20FRACTALE";
+const AGENDAR = "mailto:contacto@fractalechile.com?subject=Inter%C3%A9s%20en%20agendar%20una%20reuni%C3%B3n&body=Hola%20FRACTALE%2C%20me%20interesa%20agendar%20una%20reuni%C3%B3n.";
+const PROPONER_MARCA = "mailto:contacto@fractalechile.com?subject=Propuesta%20de%20marca%20para%20trabajar%20con%20FRACTALE&body=Hola%20FRACTALE%2C%20quiero%20proponer%20mi%20marca%20para%20trabajar%20con%20ustedes.";
 const WHATSAPP_FORCE = "https://wa.me/56958991823?text=hola%20fractale!%20quiero%20cotizar%20mis%20suplementos";
 
 export default function Portada() {
@@ -121,7 +123,7 @@ export default function Portada() {
             <p className="lead">Profesionalizamos carreras deportivas y llevamos a las marcas a los eventos clave del sur de Chile.</p>
             <div className="ctas">
               <a className="btn btn-line" href={AGENDAR}>Agendar reunión</a>
-              <a className="btn btn-line" href="#marcas">Propuesta para marcas</a>
+              <a className="btn btn-line" href={PROPONER_MARCA}>Propuesta para marcas</a>
             </div>
           </div>
         </section>
