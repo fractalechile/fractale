@@ -858,12 +858,12 @@ html:has(.fondo-portada),body:has(.fondo-portada){background:transparent}
 .f360.visible .f360-card{opacity:1;transform:none;transition-delay:calc(1.6s + var(--i)*.15s),calc(1.6s + var(--i)*.15s),0s,0s,0s}
 .f360.visible .f360-card.on{transition-delay:0s;border-color:rgba(255,255,255,.22);background:rgba(34,34,34,.5)}
 .f360.hay-activo .f360-card:not(.on){opacity:.7}
-.f360-cabeza{all:unset;box-sizing:border-box;width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:14px;
-  padding:18px 20px;cursor:pointer;border-radius:14px}
+.f360-cabeza{all:unset;box-sizing:border-box;position:relative;width:100%;display:grid;place-items:center;text-align:center;
+  padding:18px 34px;cursor:pointer;border-radius:14px}
 .f360-cabeza:focus-visible{outline:2px solid #fff;outline-offset:3px}
 .f360-num{font-size:13px;font-weight:600;letter-spacing:.08em;color:#8e8e93}
 .f360-card h3{margin:0;font-size:clamp(17px,1.5vw,19px);font-weight:500;line-height:1.25;letter-spacing:-.01em;color:rgba(255,255,255,.92)}
-.f360-mas{position:relative;width:14px;height:14px;opacity:.55;transition:transform .35s ease,opacity .3s}
+.f360-mas{position:absolute;top:12px;right:12px;width:12px;height:12px;opacity:.55;transition:transform .35s ease,opacity .3s}
 .f360-card.on .f360-mas{opacity:.9}
 .f360-mas::before,.f360-mas::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1px;background:#fff;transform:translate(-50%,-50%)}
 .f360-mas::after{transform:translate(-50%,-50%) rotate(90deg)}
@@ -929,8 +929,8 @@ html:has(.fondo-portada),body:has(.fondo-portada){background:transparent}
   .f360-atleta{width:118px}.f360-atleta strong{font-size:22px}
   .f360 .c0,.f360 .c1{align-self:end}.f360 .c2,.f360 .c3{align-self:start}
   .f360{margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);border-radius:0;padding:22px 14px}
-  .f360-cabeza{gap:8px;padding:14px;align-items:start;min-height:72px}
-  .f360-mas{margin-top:5px}.f360-card h3{font-size:15px}
+  .f360-cabeza{padding:14px 18px;min-height:72px}
+  .f360-mas{top:10px;right:10px}.f360-card h3{font-size:clamp(13.5px,4.1vw,15px);white-space:nowrap}
   .f360-info>div,.f360-card.abierto .f360-info>div{padding-left:14px;padding-right:14px}
   .f360-card.abierto .f360-info>div{padding-bottom:14px}
   .f360-card ul{gap:4px}.f360-card li{font-size:13px;padding-left:11px}
