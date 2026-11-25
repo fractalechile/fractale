@@ -875,6 +875,7 @@ html:has(.fondo-portada),body:has(.fondo-portada){background:transparent}
 .f360-card ul{margin:0;padding:0;list-style:none;display:grid;gap:6px}
 .f360-card li{position:relative;padding-left:14px;font-size:15px;line-height:1.4;color:rgba(255,255,255,.62)}
 .f360-card li::before{content:"–";position:absolute;left:0;top:0;color:rgba(255,255,255,.35)}
+.f360-eti{display:block;margin-bottom:3px;font-size:12px;font-weight:400;letter-spacing:.04em;color:rgba(255,255,255,.45)}
 .f360-centro{margin:14px 0 0;font-size:14px;font-weight:400;color:rgba(255,255,255,.5)}
 .f360-centro span{margin-right:4px}.f360-centro span::after{content:":"}
 
@@ -927,7 +928,8 @@ html:has(.fondo-portada),body:has(.fondo-portada){background:transparent}
   .f360-nucleo{width:170px;margin:-6px auto}
   .f360-atleta{width:118px}.f360-atleta strong{font-size:22px}
   .f360 .c0,.f360 .c1{align-self:end}.f360 .c2,.f360 .c3{align-self:start}
-  .f360-cabeza{gap:8px;padding:14px 14px;align-items:start}
+  .f360{margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);border-radius:0;padding:22px 14px}
+  .f360-cabeza{gap:8px;padding:14px;align-items:start;min-height:72px}
   .f360-mas{margin-top:5px}.f360-card h3{font-size:15px}
   .f360-info>div,.f360-card.abierto .f360-info>div{padding-left:14px;padding-right:14px}
   .f360-card.abierto .f360-info>div{padding-bottom:14px}

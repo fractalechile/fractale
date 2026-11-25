@@ -5,21 +5,25 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 const AREAS = [
   {
     titulo: "Seguimiento nutricional",
+    etiqueta: "Seguimiento", nombre: "Nutricional",
     items: ["Antropometría ISAK 2 mensual", "Plan de nutrición a medida", "Control de composición corporal"],
     centro: "Patagonia Medical",
   },
   {
     titulo: "Seguimiento físico",
+    etiqueta: "Seguimiento", nombre: "Físico",
     items: ["2 sesiones semanales", "Evaluación física cada 2–3 meses", "Kinesiólogos deportivos"],
     centro: "FTHAUS",
   },
   {
     titulo: "Seguimiento médico",
+    etiqueta: "Seguimiento", nombre: "Médico",
     items: ["Control médico semestral", "Telemedicina deportiva", "Laboratorio preferente"],
     centro: "Patagonia Medical",
   },
   {
     titulo: "Red de marcas",
+    etiqueta: "Alianzas", nombre: "Red de marcas",
     items: ["Under Armour", "Winkler Nutrition", "Activaciones Red Bull"],
     centro: null,
   },
@@ -208,7 +212,7 @@ export default function Fractal360() {
             onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(null)}>
             <button type="button" className="f360-cabeza" aria-expanded={abiertoAqui} aria-controls={`f360-info-${i}`}
               onClick={() => setAbierto(abiertoAqui ? null : i)}>
-              <h3>{a.titulo}</h3>
+              <h3><span className="f360-eti">{a.etiqueta}</span>{a.nombre}</h3>
               <span className="f360-mas" aria-hidden="true" />
             </button>
             <div className="f360-info" id={`f360-info-${i}`} role="region" aria-label={a.titulo}>
