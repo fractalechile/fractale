@@ -827,3 +827,115 @@ html:has(.fondo-portada),body:has(.fondo-portada){background:transparent}
   .gnav .nav-inscribete{max-width:190px;min-height:38px;padding:4px 12px;font-size:11.5px;line-height:1.12;white-space:normal;text-align:center}
   .mm-accion .btn{width:100%;box-sizing:border-box;white-space:normal;text-align:center}
 }
+
+/* ===== Acompañamiento 360: red fractal hacia el atleta ===== */
+.f360{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr) minmax(190px,.5fr) minmax(0,1fr);
+  grid-template-rows:1fr 1fr;grid-template-areas:"a n b" "c n d";row-gap:24px;min-height:clamp(420px,36vw,490px);
+  padding:clamp(24px,3.4vw,48px);border-radius:28px;color:#f5f5f7;overflow:hidden;
+  background:radial-gradient(ellipse at 50% 50%,#191919 0%,#0a0a0a 55%,#000 100%)}
+.f360 .c0{grid-area:a;align-self:start;justify-self:end}.f360 .c1{grid-area:b;align-self:start;justify-self:start}
+.f360 .c2{grid-area:c;align-self:end;justify-self:end}.f360 .c3{grid-area:d;align-self:end;justify-self:start}
+.f360 .f360-card{width:min(100%,300px)}
+.f360-nucleo{grid-area:n;position:relative;z-index:2;align-self:center;justify-self:center;width:220px;aspect-ratio:1;display:grid;place-items:center;
+  background:radial-gradient(circle,rgba(255,255,255,.08) 0%,rgba(255,255,255,.02) 45%,transparent 70%)}
+
+/* fractal de fondo */
+.f360-fondo{position:absolute;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1.6s ease;will-change:transform}
+.f360-fondo svg{display:block;width:100%;height:100%;overflow:visible}
+.f360.visible .f360-fondo{opacity:1;animation:f360-gira 160s linear infinite}
+.f360.hay-activo .f360-fondo{animation-duration:60s}
+.f360-fondo .fr{stroke:#fff;stroke-linecap:round}
+.f360-fondo .d0{stroke-width:1.6;stroke-opacity:.32}.f360-fondo .d1{stroke-width:1.3;stroke-opacity:.24}
+.f360-fondo .d2{stroke-width:1;stroke-opacity:.18}.f360-fondo .d3{stroke-width:.8;stroke-opacity:.13}.f360-fondo .d4{stroke-width:.7;stroke-opacity:.1}
+.f360-fondo .fp{fill:#fff;opacity:.15}
+.f360.visible .f360-fondo .fp{animation:f360-titila 4s ease-in-out infinite both}
+.f360-red{position:absolute;left:0;top:0;z-index:0;pointer-events:none;overflow:visible}
+
+/* recuadros: solo título, se despliegan al hacer click */
+.f360-card{position:relative;z-index:3;border-radius:14px;background:rgba(22,22,22,.38);border:1px solid rgba(255,255,255,.07);
+  -webkit-backdrop-filter:blur(16px) saturate(120%);backdrop-filter:blur(16px) saturate(120%);
+  opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1),border-color .3s,background .3s,box-shadow .3s}
+.f360.visible .f360-card{opacity:1;transform:none;transition-delay:calc(1.6s + var(--i)*.15s),calc(1.6s + var(--i)*.15s),0s,0s,0s}
+.f360.visible .f360-card.on{transition-delay:0s;border-color:rgba(255,255,255,.22);background:rgba(34,34,34,.5)}
+.f360.hay-activo .f360-card:not(.on){opacity:.7}
+.f360-cabeza{all:unset;box-sizing:border-box;width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:14px;
+  padding:18px 20px;cursor:pointer;border-radius:14px}
+.f360-cabeza:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.f360-num{font-size:13px;font-weight:600;letter-spacing:.08em;color:#8e8e93}
+.f360-card h3{margin:0;font-size:clamp(17px,1.5vw,19px);font-weight:500;line-height:1.25;letter-spacing:-.01em;color:rgba(255,255,255,.92)}
+.f360-mas{position:relative;width:14px;height:14px;opacity:.55;transition:transform .35s ease,opacity .3s}
+.f360-card.on .f360-mas{opacity:.9}
+.f360-mas::before,.f360-mas::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1px;background:#fff;transform:translate(-50%,-50%)}
+.f360-mas::after{transform:translate(-50%,-50%) rotate(90deg)}
+.f360-card.abierto .f360-mas{transform:rotate(45deg);opacity:.9}
+.f360-info{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.2,.8,.2,1)}
+.f360-info>div{overflow:hidden;padding:0 20px;opacity:0;transition:opacity .3s ease,padding .45s cubic-bezier(.2,.8,.2,1)}
+.f360-card.abierto .f360-info{grid-template-rows:1fr}
+.f360-card.abierto .f360-info>div{opacity:1;padding:0 20px 18px;transition-delay:.1s,0s}
+.f360-card ul{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.f360-card li{position:relative;padding-left:14px;font-size:15px;line-height:1.4;color:rgba(255,255,255,.62)}
+.f360-card li::before{content:"–";position:absolute;left:0;top:0;color:rgba(255,255,255,.35)}
+.f360-centro{margin:14px 0 0;font-size:14px;font-weight:400;color:rgba(255,255,255,.5)}
+.f360-centro span{margin-right:4px}.f360-centro span::after{content:":"}
+
+/* ramas hacia los recuadros */
+.f360-red .r{stroke:#fff;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-opacity .3s,stroke-width .3s}
+.f360-red .d0{stroke-width:2;stroke-opacity:.7}.f360-red .d1{stroke-width:1.5;stroke-opacity:.58}
+.f360-red .d2{stroke-width:1.1;stroke-opacity:.48}.f360-red .d3,.f360-red .d4{stroke-width:.9;stroke-opacity:.36}
+.f360.visible .f360-red .r{animation:f360-dibuja .55s cubic-bezier(.3,.7,.3,1) forwards;animation-delay:calc(.9s + var(--d)*.22s)}
+.f360-red .nudo{fill:#000;stroke:#fff;stroke-width:1.4;opacity:0;transition:opacity .5s}
+.f360-red .punta{fill:#fff;opacity:0}
+.f360.visible .f360-red .nudo{opacity:.9;transition-delay:1.4s}
+.f360.visible .f360-red .punta{animation:f360-titila 3s ease-in-out 2s infinite both}
+.f360-red .pulso{fill:#fff;opacity:.6}
+.f360-anillo{fill:none;stroke:#fff;stroke-width:1;stroke-opacity:.25;stroke-dasharray:1;stroke-dashoffset:1}
+.f360.visible .f360-anillo{animation:f360-dibuja 1.4s ease 1.8s forwards}
+.f360-arbol{transition:opacity .3s}
+.f360-arbol.on .r{stroke-opacity:1}.f360-arbol.on .d0{stroke-width:2.6}.f360-arbol.on .d1{stroke-width:2}
+.f360-arbol.on .nudo{opacity:1;fill:#fff}.f360-arbol.on .pulso{opacity:1}
+.f360.hay-activo .f360-arbol:not(.on){opacity:.35}
+
+/* atleta al centro */
+.f360-atleta{position:relative;width:140px;aspect-ratio:1;border-radius:50%;display:grid;place-content:center;text-align:center;gap:2px;
+  background:rgba(12,12,12,.7);border:1px solid rgba(255,255,255,.4);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  opacity:0;transform:scale(.6);transition:opacity .6s ease .3s,transform .8s cubic-bezier(.2,1.4,.4,1) .3s}
+.f360.visible .f360-atleta{opacity:1;transform:none}
+.f360-atleta::before,.f360-atleta::after{content:"";position:absolute;inset:-1px;border-radius:50%;border:1px solid rgba(255,255,255,.25);opacity:0;pointer-events:none}
+.f360.visible .f360-atleta::before{animation:f360-onda 3.2s ease-out 1.5s infinite}
+.f360.visible .f360-atleta::after{animation:f360-onda 3.2s ease-out 3.1s infinite}
+
+.f360-atleta strong{font-size:24px;font-weight:500;letter-spacing:-.01em;color:#fff;line-height:1.05}
+.f360-atleta .sub{position:absolute;left:50%;top:calc(50% + 18px);transform:translateX(-50%);width:12ch;font-size:11px;line-height:1.25;color:rgba(255,255,255,.55)}
+
+@keyframes f360-dibuja{to{stroke-dashoffset:0}}
+@keyframes f360-gira{to{transform:rotate(360deg)}}
+@keyframes f360-titila{0%,100%{opacity:.15}50%{opacity:.9}}
+@keyframes f360-onda{0%{opacity:.5;transform:scale(1)}100%{opacity:0;transform:scale(1.6)}}
+
+/* tablet: atleta entre las dos filas */
+@media(max-width:940px){
+  .f360{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto auto auto;grid-template-areas:"a b" "n n" "c d";
+    row-gap:0;column-gap:16px;min-height:0}
+  .f360 .f360-card{width:100%;justify-self:stretch}
+  .f360-nucleo{width:200px;margin:-8px auto}
+  .f360-atleta{width:128px}
+}
+/* móvil: recuadros compactos en 2×2 alrededor del atleta */
+@media(max-width:600px){
+  .f360{column-gap:10px;padding:14px;border-radius:22px}
+  .f360-nucleo{width:170px;margin:-6px auto}
+  .f360-atleta{width:118px}.f360-atleta strong{font-size:22px}
+  .f360 .c0,.f360 .c1{align-self:end}.f360 .c2,.f360 .c3{align-self:start}
+  .f360-cabeza{gap:8px;padding:14px 14px;align-items:start}
+  .f360-mas{margin-top:5px}.f360-card h3{font-size:15px}
+  .f360-info>div,.f360-card.abierto .f360-info>div{padding-left:14px;padding-right:14px}
+  .f360-card.abierto .f360-info>div{padding-bottom:14px}
+  .f360-card ul{gap:4px}.f360-card li{font-size:13px;padding-left:11px}
+  .f360-centro{margin-top:10px;font-size:12.5px}
+}
+@media(prefers-reduced-motion:reduce){
+  .f360 *,.f360 *::before,.f360 *::after{animation:none!important;transition:none!important}
+  .f360 .f360-card,.f360 .f360-atleta,.f360 .f360-fondo{opacity:1;transform:none}
+  .f360-red .r,.f360-anillo{stroke-dashoffset:0}.f360-red .punta,.f360-red .nudo{opacity:.7}
+}

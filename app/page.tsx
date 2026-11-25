@@ -1,4 +1,5 @@
 import EfectosPortada from "./efectos-portada";
+import Fractal360 from "./fractal-360";
 
 const ATLETAS = [
   {
@@ -154,34 +155,7 @@ export default function Portada() {
               <h2 className="headline">Descentralizando la élite.</h2>
               <p className="lead">Liberamos al atleta de la carga operativa, administrativa y médica para que ponga toda su energía en rendir y ganar.</p>
             </div>
-            <div className="servicios">
-              <article className="srv-grande">
-                <img src="/assets/fotos/karate.jpg" alt="Deportista de karate en competencia" />
-                <div>
-                  <p className="k">01 · Performance</p>
-                  <h3>Entrenar con estándar internacional.</h3>
-                  <p>Programas de alta exigencia, planificación técnica y monitoreo de cargas.</p>
-                </div>
-              </article>
-              <div className="srv-columna">
-                <article className="srv-lado">
-                  <img className="srv-patagonia" src="/assets/fotos/patagonia.jpg" alt="Centro médico Patagonia Medical" />
-                  <div>
-                    <p className="k">02 · Salud y bienestar</p>
-                    <h3>Medicina y nutrición que aceleran la recuperación.</h3>
-                    <p>Cobertura médica especializada y nutrición deportiva orientada al rendimiento.</p>
-                  </div>
-                </article>
-                <article className="srv-lado inverso">
-                  <div>
-                    <p className="k">03 · Marketing y gestión comercial</p>
-                    <h3>Una marca personal que atrae patrocinio.</h3>
-                    <p>Posicionamiento, gestión de prensa, patrocinios y financiamiento privado.</p>
-                  </div>
-                  <img className="srv-ua" src="/assets/fotos/under-armour.jpg" alt="Marca Under Armour junto a FRACTALE" />
-                </article>
-              </div>
-            </div>
+            <Fractal360 />
 
             <div className="plantel-cabeza" id="atletas">
               <p className="eyebrow mini">Nuestro equipo</p>
