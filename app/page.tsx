@@ -6,20 +6,21 @@ const ATLETAS = [
     dorsal: "07", nombre: "Francisco Marín Zúñiga", disciplina: "Trail Running", foto: "f-francisco",
     perfil: "Seleccionado Nacional 2025 · 720 pts ITRA",
     logros: [
-      "1er lugar General, Cochrane Patagonia Trail 2022",
-      "Primer chileno, Paraty Brazil by UTMB 2023",
+      "Campeón, Ultra Paine 50 km 2026",
       "15° Sudamericano, Mundial de Montaña y Trail 2025",
       "2° General, Gran Travesía de los Valles 2025",
+      "Primer chileno, Paraty Brazil by UTMB 2023",
+      "1er lugar General, Cochrane Patagonia Trail 2022",
     ],
   },
   {
     dorsal: "12", nombre: "Alen Hernández Concha", disciplina: "Karate · Kumite -68 kg", foto: "f-alen",
     perfil: "Team Chile · Cinturón Negro 1er Dan",
     logros: [
-      "1er lugar Nacional U21: 2024, 2025 y 2026",
-      "3er lugar Sudamericano: 2023 y 2024",
       "5° Panamericano U21, Macaé, Brasil 2026",
+      "1er lugar Nacional U21: 2024, 2025 y 2026",
       "5 años consecutivos, 1er lugar Zonal (2022–2026)",
+      "3er lugar Sudamericano: 2023 y 2024",
     ],
   },
   {
@@ -165,7 +166,6 @@ export default function Portada() {
               {ATLETAS.map((a) => (
                 <article className="atleta" key={a.dorsal}>
                   <div className={`atleta-foto ${a.foto}`} {...(a.foto ? { role: "img", "aria-label": `${a.nombre} en competencia` } : { "aria-hidden": true })}>
-                    <span className="dorsal" aria-hidden="true">{a.dorsal}</span>
                   </div>
                   <div className="atleta-txt">
                     <p className="disciplina">{a.disciplina}</p>
