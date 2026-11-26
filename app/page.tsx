@@ -168,7 +168,6 @@ export default function Portada() {
         <section id="alianzas">
           <div className="wrap">
             <div className="center">
-              <p className="eyebrow mini">Respaldados por un ecosistema de clase mundial</p>
               <h2 className="headline">Nuestra red de alianzas oficiales.</h2>
               <p className="lead muted" style={{ maxWidth: "34ch", marginLeft: "auto", marginRight: "auto" }}>Para que nuestros atletas entrenen con los mejores estándares del país.</p>
             </div>
@@ -235,19 +234,14 @@ export default function Portada() {
             <div className="center">
               <p className="eyebrow mini">Propuesta de valor B2B</p>
               <h2 className="headline">¿Por qué aliarse con FRACTALE?</h2>
-              <p className="lead muted" style={{ maxWidth: "36ch", marginLeft: "auto", marginRight: "auto" }}>No es un patrocinio tradicional. Es una inversión en posicionamiento, reputación y retorno.</p>
+              <p className="lead muted">Posicionamiento, reputación y retorno.</p>
             </div>
-            <div className="bento">
-              <div className="b w3"><span className="n">01</span><b>Posicionamiento territorial exclusivo.</b>
-                <p>Domine el segmento de mayor crecimiento del sur asociándose a la descentralización y al orgullo regional.</p></div>
-              <div className="b w3"><span className="n">02</span><b>Retorno directo y medible.</b>
-                <p>Activaciones B2C y B2B alineadas a sus KPI: de leads a punto de venta y beneficios corporativos.</p></div>
-              <div className="b"><span className="n">03</span><b>Atletas de élite.</b>
-                <p>Resiliencia, innovación y alto desempeño, contados por nuestros deportistas.</p></div>
-              <div className="b"><span className="n">04</span><b>Responsabilidad social y ESG.</b>
-                <p>Desarrollo deportivo local con métricas transparentes de impacto.</p></div>
-              <div className="b"><span className="n">05</span><b>Carga operativa cero.</b>
-                <p>Gestionamos, activamos y reportamos su presencia de principio a fin.</p></div>
+            <div className="bento razones">
+              <div className="b"><b>Territorio exclusivo</b><p>Su marca, unida al orgullo del sur.</p></div>
+              <div className="b"><b>Retorno medible</b><p>Activaciones alineadas a sus KPI.</p></div>
+              <div className="b"><b>Atletas de élite</b><p>Historias reales de alto rendimiento.</p></div>
+              <div className="b"><b>Impacto social</b><p>Desarrollo deportivo local.</p></div>
+              <div className="b"><b>Cero carga operativa</b><p>Lo gestionamos de principio a fin.</p></div>
             </div>
           </div>
         </section>
@@ -300,25 +294,6 @@ export default function Portada() {
       <footer>
         <div className="wrap">
           <p className="nota">FRACTALE Sport Management trabaja con atletas, eventos y marcas desde Puerto Montt, Región de Los Lagos, Chile. Escríbenos a <a href="mailto:contacto@fractalechile.com" style={{ color: "var(--link)" }}>contacto@fractalechile.com</a>.</p>
-          <div className="cols">
-            <div><h5>Atletas</h5>
-              <a href="#acompanamiento">Acompañamiento 360°</a><a href="#acompanamiento">Performance</a>
-              <a href="#acompanamiento">Salud y bienestar</a><a href="#acompanamiento">Marketing y gestión</a></div>
-            <div><h5>Marcas</h5>
-              <a href="#marcas">Propuesta B2B</a><a href="#eventos">Eventos</a>
-              <a href="#alianzas">Alianzas</a><a href={AGENDAR}>Agendar reunión</a></div>
-            <div><h5>Equipo</h5>
-              <a href="/panel.html">Panel</a><a href="/panel.html">Entrenadores</a>
-              <a href="/panel.html">Médicos</a><a href="/panel.html">Nutricionistas</a></div>
-            <div><h5>FRACTALE</h5>
-              <a href="#top">Quiénes somos</a>
-              <a href={MEDIA_MARATON}>Inscríbete a la Media Maratón de los Ulmos</a>
-              <a href="https://instagram.com/fractale.cl" target="_blank" rel="noopener">Instagram</a>
-              <a href="#contacto">Contacto</a></div>
-            <div><h5>Dónde estamos</h5>
-              <p>Puerto Montt, Región de Los Lagos, Chile.</p>
-              <p>Instagram oficial: @fractale.cl</p></div>
-          </div>
           <div className="legal">
             <span>Copyright © {new Date().getFullYear()} FRACTALE Sport Management. Todos los derechos reservados.</span>
             <span className="spacer"></span>

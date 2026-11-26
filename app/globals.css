@@ -1050,3 +1050,76 @@ html:has(.fondo-portada),body:has(.fondo-portada){background:transparent}
 }
 /* sonido pegado al costado derecho */
 .cine-mm-der .cine-sonido{position:absolute;right:0;top:50%;transform:translateY(-50%)}
+
+/* ===== Tema negro de la landing ===== */
+body:has(.fondo-portada){
+  --white:#0a0b0c;--gray:#111214;--ink:#f4f4f5;--ink-2:#a1a1a6;--ink-3:#86868b;
+  --line:rgba(255,255,255,.12);--link:#7fd4ff;
+  background:#0a0b0c;color:var(--ink);color-scheme:dark}
+html:has(.fondo-portada){background:#0a0b0c}
+.fondo-portada{background:#0a0b0c}
+.fondo-portada::before{opacity:.18;filter:grayscale(1)}
+.fondo-portada::after{background:rgba(10,11,12,.6)}
+.fondo-portada ~ main .gray,.fondo-portada ~ .ribbon{background:rgba(17,18,20,.86)}
+.fondo-portada ~ main .night{background:rgba(0,0,0,.7)}
+.fondo-portada ~ main > section:not(.hero):not(.gray):not(.night){background:rgba(10,11,12,.82)}
+.fondo-portada ~ footer{background:#050506;color:var(--ink-2);border-top:1px solid var(--line)}
+/* barra superior oscura */
+body:has(.fondo-portada) .gnav{background:rgba(10,11,12,.78);border-bottom:1px solid var(--line)}
+body:has(.fondo-portada) .gnav .links a{color:rgba(255,255,255,.75)}
+body:has(.fondo-portada) .gnav .links a:hover{color:#fff}
+body:has(.fondo-portada) .gnav .brand img{content:url("/assets/logo-dark.png")}
+body:has(.fondo-portada) .gnav .icon{color:#fff}
+body:has(.fondo-portada) .sheet{background:rgba(10,11,12,.97);color:#fff}
+body:has(.fondo-portada) .bento .b{background:#141518;border:1px solid var(--line)}
+body:has(.fondo-portada) .unete-zona{background:rgba(10,11,12,.82)}
+body:has(.fondo-portada) .unete-in{background:#111214;color:var(--ink)}
+body:has(.fondo-portada) .evento-logos span{background:#f4f4f5;border-color:transparent}
+/* logos oscuros en blanco sobre fondo negro */
+body:has(.fondo-portada) .allies img[src*="under-armour"],
+body:has(.fondo-portada) .allies img[src*="winkler-nutrition"],
+body:has(.fondo-portada) .allies img[src*="oxxean"]{filter:brightness(0) invert(1)}
+body:has(.fondo-portada) .evento-logos{background:rgba(10,11,12,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:#f4f4f5;border:1px solid var(--line)}
+.evento-txt .btn{max-width:100%;box-sizing:border-box;white-space:normal;text-align:center;line-height:1.2}
+@media(max-width:734px){.evento-txt .btn{font-size:14px;padding:10px 14px}}
+/* Force: los 5 productos en una sola fila */
+.force-productos{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:10px!important;text-align:center}
+.force-productos>div{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0}
+@media(max-width:734px){
+  .force-productos{gap:4px!important}
+  .force-productos b{font-size:12.5px}
+  .force-productos span{font-size:10.5px;line-height:1.25}
+}
+@media(max-width:734px){.force-productos span{font-size:10px;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:anywhere}.force-productos{margin-left:-6px;margin-right:-6px}}
+/* Eventos: solo logos, sin casillas */
+body:has(.fondo-portada) .evento-logos span{background:transparent!important;border:0;padding:4px 6px}
+body:has(.fondo-portada) .evento-logos img[src*="under-armour"],
+body:has(.fondo-portada) .evento-logos img[src*="winkler-nutrition"],
+body:has(.fondo-portada) .evento-logos img[src*="oxxean"]{filter:brightness(0) invert(1)}
+/* ¿Por qué aliarse? versión resumida */
+.fondo-portada ~ main .bento.razones{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.fondo-portada ~ main .bento.razones .b{grid-column:auto;padding:20px 18px;gap:6px}
+.bento.razones .b b{font-size:17px;line-height:1.2}
+.bento.razones .b p{font-size:14px;line-height:1.35;margin:0}
+@media(max-width:1068px){.fondo-portada ~ main .bento.razones{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:734px){
+  .fondo-portada ~ main .bento.razones{grid-template-columns:1fr 1fr;gap:8px}
+  .fondo-portada ~ main .bento.razones .b{padding:14px 13px}
+  .fondo-portada ~ main .bento.razones .b:last-child{grid-column:1/-1}
+  .bento.razones .b b{font-size:15px}.bento.razones .b p{font-size:12.5px}
+}
+.fondo-portada ~ main .bento.razones{margin-top:22px}
+.fondo-portada ~ main .bento.razones .b{padding:14px 16px;gap:4px;border-radius:16px}
+@media(max-width:734px){.fondo-portada ~ main .bento.razones .b{padding:11px 12px}}
+/* alianzas: siempre 3 por fila, nadie queda solo */
+.fondo-portada ~ main .allies{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:734px){
+  .fondo-portada ~ main .allies{gap:8px}
+  .fondo-portada ~ main .allies article{padding:12px 10px;border-radius:14px}
+  .fondo-portada ~ main .allies .logo{height:34px;margin-bottom:10px}
+  .fondo-portada ~ main .allies .logo img{max-width:100%}
+  .fondo-portada ~ main .allies h4{font-size:13px;line-height:1.2;margin:0 0 4px}
+  .fondo-portada ~ main .allies p{font-size:11px;line-height:1.3;margin:0}
+}
+.fondo-portada ~ main .allies .logo{justify-content:center}
+.fondo-portada ~ main .allies h4{text-align:center}
