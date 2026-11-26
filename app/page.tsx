@@ -57,7 +57,6 @@ const FORCE = [
 
 const MEDIA_MARATON = "https://www.mediamaratonrutadelosulmos.cl/";
 const AGENDAR = "mailto:contacto@fractalechile.com?subject=Inter%C3%A9s%20en%20agendar%20una%20reuni%C3%B3n&body=Hola%20FRACTALE%2C%20me%20interesa%20agendar%20una%20reuni%C3%B3n.";
-const PROPONER_MARCA = "mailto:contacto@fractalechile.com?subject=Propuesta%20de%20marca%20para%20trabajar%20con%20FRACTALE&body=Hola%20FRACTALE%2C%20quiero%20proponer%20mi%20marca%20para%20trabajar%20con%20ustedes.";
 const WHATSAPP_FORCE = "https://wa.me/56958991823?text=hola%20fractale!%20quiero%20cotizar%20mis%20suplementos";
 
 export default function Portada() {
@@ -110,16 +109,12 @@ export default function Portada() {
             ))}
           </div>
         </div>
-        <div className="mm-accion">
-          <img src="/assets/marcas/media-maraton-ulmos.png" alt="Media Maratón Ruta de los Ulmos" />
-          <a className="btn btn-white" href={MEDIA_MARATON} target="_blank" rel="noopener">Inscríbete a la Media Maratón de los Ulmos</a>
-        </div>
       </section>
 
       <main id="top">
 
         {/* portada */}
-        <PortadaCine agendar={AGENDAR} marcas={PROPONER_MARCA} />
+        <PortadaCine agendar={AGENDAR} mediaMaraton={MEDIA_MARATON} />
 
         {/* manifiesto */}
         <section className="night">
