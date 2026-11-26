@@ -1,4 +1,5 @@
 import { Archivo, JetBrains_Mono } from "next/font/google";
+import SonidoPortada from "./sonido-portada";
 
 const ancho = Archivo({ subsets: ["latin"], axes: ["wdth"], variable: "--f-ancho" });
 const mono = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--f-mono" });
@@ -31,7 +32,10 @@ export default function PortadaCine({ agendar, mediaMaraton }: { agendar: string
 
       <div className="mm-accion cine-mm">
         <img src="/assets/marcas/media-maraton-ulmos.png" alt="Media Maratón Ruta de los Ulmos" />
-        <a className="btn btn-white" href={mediaMaraton} target="_blank" rel="noopener">Inscríbete a la Media Maratón de los Ulmos</a>
+        <div className="cine-mm-der">
+          <a className="btn btn-white" href={mediaMaraton} aria-label="Inscríbete a la Media Maratón de los Ulmos">Inscríbete</a>
+          <SonidoPortada />
+        </div>
       </div>
 
       <div className="cine-centro">

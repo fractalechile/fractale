@@ -1024,3 +1024,29 @@ html:has(.fondo-portada),body:has(.fondo-portada){background:transparent}
   .cine-esq.bl .cine-acc{width:auto}
   .cine-esq.bl .cine-btn{font-size:12.5px;padding:10px 14px;white-space:nowrap}
 }
+/* Media Maratón: logo a la izquierda, botón a la derecha */
+.cine-mm{left:28px;right:28px;width:auto;transform:none;justify-content:space-between;flex-wrap:nowrap;padding:0;animation-name:cine-entra}
+.cine-mm img{width:min(150px,38vw)}
+.cine-mm .btn{font-size:13px;padding:8px 18px;width:auto;white-space:nowrap}
+@media(max-width:734px){.cine-mm{left:16px;right:16px;padding:0;width:auto}.cine-mm .btn{font-size:12.5px;padding:7px 16px}}
+/* botón de sonido */
+.cine-sonido{position:absolute;z-index:4;top:84px;right:28px;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);font-family:var(--f-mono),monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background .25s,border-color .25s;opacity:0;animation:cine-entra 1s cubic-bezier(.2,.7,.2,1) 1.1s forwards}
+.cine-sonido:hover{background:rgba(255,255,255,.24);border-color:rgba(255,255,255,.6)}
+.cine-sonido.on{border-color:#7fd4ff;color:#7fd4ff}
+@media(max-width:734px){.cine-sonido{top:72px;right:16px;padding:7px 11px;font-size:9.5px}}
+@media(prefers-reduced-motion:reduce){.cine-sonido{animation:none;opacity:1}}
+.cine-mm-der{display:flex;align-items:center;gap:8px;flex:none}
+.cine-mm-der .cine-sonido{position:static;animation:none;opacity:1}
+@media(max-width:734px){.cine-mm-der .cine-sonido span{display:none}.cine-mm-der .cine-sonido{padding:8px 10px}}
+/* logo e Inscríbete juntos, centrados */
+.cine-mm{justify-content:center;gap:16px}
+.cine-mm-der{gap:8px}
+@media(max-width:734px){.cine-mm{gap:12px}}
+/* barra: logo FRACTALE al centro cuando no hay enlaces */
+@media(max-width:1180px){
+  .gnav .wrap{position:relative;justify-content:center}
+  .gnav .brand{margin:0 auto}
+  .gnav .burger{position:absolute;right:16px;top:50%;transform:translateY(-50%)}
+}
+/* sonido pegado al costado derecho */
+.cine-mm-der .cine-sonido{position:absolute;right:0;top:50%;transform:translateY(-50%)}

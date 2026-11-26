@@ -80,7 +80,6 @@ export default function Portada() {
             <a href="#contacto">Contacto</a>
             <a href="/panel.html">Panel del equipo</a>
           </div>
-          <a className="btn btn-blue btn-sm nav-inscribete" href={MEDIA_MARATON} target="_blank" rel="noopener">Inscríbete a la Media Maratón de los Ulmos</a>
           <button className="icon burger" id="burger" aria-label="Menú" aria-expanded="false">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               strokeWidth="1.7" strokeLinecap="round" aria-hidden="true"><path d="M4 9h16M4 15h16" /></svg>
@@ -96,7 +95,7 @@ export default function Portada() {
         <a href="#terreno">En terreno</a>
         <a href="#contacto">Contacto</a>
         <hr />
-        <a className="chico" href={MEDIA_MARATON} target="_blank" rel="noopener">Inscríbete a la Media Maratón de los Ulmos</a>
+        <a className="chico" href={MEDIA_MARATON}>Inscríbete a la Media Maratón de los Ulmos</a>
         <a className="chico" href="/panel.html">Panel del equipo</a>
         <a className="chico" href="https://instagram.com/fractale.cl" target="_blank" rel="noopener">@fractale.cl</a>
       </div>
@@ -313,7 +312,7 @@ export default function Portada() {
               <a href="/panel.html">Médicos</a><a href="/panel.html">Nutricionistas</a></div>
             <div><h5>FRACTALE</h5>
               <a href="#top">Quiénes somos</a>
-              <a href={MEDIA_MARATON} target="_blank" rel="noopener">Inscríbete a la Media Maratón de los Ulmos</a>
+              <a href={MEDIA_MARATON}>Inscríbete a la Media Maratón de los Ulmos</a>
               <a href="https://instagram.com/fractale.cl" target="_blank" rel="noopener">Instagram</a>
               <a href="#contacto">Contacto</a></div>
             <div><h5>Dónde estamos</h5>
