@@ -946,3 +946,35 @@ html:has(.fondo-portada),body:has(.fondo-portada){background:transparent}
   .f360 .f360-card,.f360 .f360-atleta,.f360 .f360-fondo{opacity:1;transform:none}
   .f360-red .r,.f360-anillo{stroke-dashoffset:0}.f360-red .punta,.f360-red .nudo{opacity:.7}
 }
+
+/* ===== Portada estilo cine ===== */
+.fondo-portada ~ main .hero.cine{position:relative;display:block;min-height:0;height:calc(100svh - 48px - 121px);min-height:560px;padding:0;overflow:hidden;background:#0a0b0c;color:#f4f4f5;text-align:center}
+.cine-foto{position:absolute;inset:-4%;background:url("/assets/fotos/francisco-paine.jpg") center 30%/cover;filter:grayscale(1) contrast(1.15) brightness(.5);animation:cine-zoom 22s ease-in-out infinite alternate}
+.hero.cine::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 30%,rgba(0,0,0,.75) 100%)}
+@keyframes cine-zoom{to{transform:scale(1.08) translateY(-1.5%)}}
+.cine-visor{position:absolute;left:50%;top:50%;width:min(86svh,860px,140vw);aspect-ratio:1;transform:translate(-50%,-50%);z-index:1;opacity:.55;pointer-events:none}
+.cine-visor .v1{animation:cine-gira 60s linear infinite;transform-origin:200px 200px}
+.cine-visor .v2{animation:cine-gira 90s linear infinite reverse;transform-origin:200px 200px}
+@keyframes cine-gira{to{transform:rotate(360deg)}}
+.cine-centro{position:absolute;inset:0;z-index:2;display:grid;place-items:center}
+.cine-titulo{font-family:var(--f-ancho),sans-serif;font-stretch:125%;font-weight:800;font-size:clamp(56px,13vw,190px);line-height:.98;letter-spacing:-.01em;color:#fff;margin:0}
+.cine-sub{display:block;font-family:var(--f-mono),monospace;font-weight:400;font-size:clamp(12px,1.8vw,24px);letter-spacing:.9em;padding-left:.9em;margin-top:18px;color:#e8e8ea}
+.cine-esq{position:absolute;z-index:3;margin:0;font-family:var(--f-mono),monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;line-height:1.6;color:#e8e8ea;text-align:left}
+.cine-esq.tl{top:28px;left:28px}.cine-esq.tr{top:28px;right:28px;text-align:right}
+.cine-esq.bl{bottom:28px;left:28px}.cine-esq.br{bottom:28px;right:28px;text-align:right;text-decoration:none}
+.cine-esq.br:hover{color:#7fd4ff}
+.cine-acc{display:flex;flex-direction:column;gap:10px;margin-bottom:22px;width:230px}
+.cine-btn{display:flex;justify-content:center;font-family:-apple-system,system-ui,sans-serif;font-size:14px;font-weight:500;letter-spacing:0;text-transform:none;padding:12px 18px;border:1px solid #fff;text-decoration:none;transition:.25s}
+.cine-btn.blanco{background:#fff;color:#000}.cine-btn.blanco:hover{background:#7fd4ff;border-color:#7fd4ff}
+.cine-btn.linea{color:#fff}.cine-btn.linea:hover{background:#fff;color:#000}
+.cine-titulo,.cine-esq{opacity:0;transform:translateY(18px);animation:cine-entra 1s cubic-bezier(.2,.7,.2,1) forwards}
+.cine-titulo{animation-delay:.2s}.cine-esq.tl{animation-delay:.7s}.cine-esq.tr{animation-delay:.8s}.cine-esq.bl{animation-delay:.9s}.cine-esq.br{animation-delay:1s}
+@keyframes cine-entra{to{opacity:1;transform:none}}
+@media(max-width:734px){
+  .fondo-portada ~ main .hero.cine{height:calc(100svh - 48px - 150px);min-height:540px}
+  .cine-esq.tl{top:20px;left:16px}.cine-esq.tr{top:20px;right:16px}
+  .cine-esq.bl{left:16px;right:16px;bottom:20px}.cine-acc{width:auto}
+  .cine-esq.br{display:none}.cine-sub{letter-spacing:.5em;padding-left:.5em}
+  .cine-titulo{font-size:13.2vw}.cine-visor{width:120vw}
+}
+@media(prefers-reduced-motion:reduce){.cine-foto,.cine-visor g,.cine-titulo,.cine-esq{animation:none!important;opacity:1!important;transform:none!important}}

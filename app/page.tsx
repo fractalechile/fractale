@@ -1,5 +1,6 @@
 import EfectosPortada from "./efectos-portada";
 import Fractal360 from "./fractal-360";
+import PortadaCine from "./portada-cine";
 
 const ATLETAS = [
   {
@@ -118,17 +119,7 @@ export default function Portada() {
       <main id="top">
 
         {/* portada */}
-        <section className="hero">
-          <div className="wrap">
-            <p className="eyebrow logo-portada"><img src="/assets/fractale-oficial.png" alt="FRACTALE Sport Management" /></p>
-            <h1 className="display">El éxito está en el sur.</h1>
-            <p className="lead">Profesionalizamos carreras deportivas y llevamos a las marcas a los eventos clave del sur de Chile.</p>
-            <div className="ctas">
-              <a className="btn btn-line" href={AGENDAR}>Agendar reunión</a>
-              <a className="btn btn-line" href={PROPONER_MARCA}>Propuesta para marcas</a>
-            </div>
-          </div>
-        </section>
+        <PortadaCine agendar={AGENDAR} marcas={PROPONER_MARCA} />
 
         {/* manifiesto */}
         <section className="night">
