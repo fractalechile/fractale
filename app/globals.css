@@ -1195,3 +1195,20 @@ body:has(.fondo-portada){background:transparent}
 .cambio-fila p{justify-content:center;text-align:center}
 .cambio-cab span{text-align:center}
 .cambio-grad,.cambio-cab span:last-child{background:linear-gradient(90deg,#64d2ff,#0a84ff 45%,#5e5ce6);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+/* galería en terreno: cinta continua de fotos y videos */
+.carrusel{margin:28px -22px 0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.carrusel-pista{display:flex;gap:14px;width:max-content;animation:carrusel-corre 70s linear infinite}
+.carrusel:hover .carrusel-pista{animation-play-state:paused}
+.carrusel-item{flex:none;width:clamp(190px,22vw,280px);aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:#111214;border:1px solid var(--line)}
+.carrusel-item img,.carrusel-item video{width:100%;height:100%;object-fit:cover;display:block}
+@keyframes carrusel-corre{to{transform:translateX(calc(-50% - 7px))}}
+@media(max-width:734px){.carrusel{margin:22px -16px 0}.carrusel-pista{gap:10px;animation-duration:55s}.carrusel-item{width:62vw;border-radius:14px}}
+@media(prefers-reduced-motion:reduce){.carrusel{overflow-x:auto}.carrusel-pista{animation:none}}
+.carrusel-pista{animation-duration:38s}
+@media(max-width:734px){.carrusel-pista{animation-duration:30s}}
+/* galería deslizable */
+.carrusel{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;cursor:grab;overscroll-behavior-x:contain}
+.carrusel::-webkit-scrollbar{display:none}
+.carrusel:active{cursor:grabbing}
+.carrusel-pista{animation:none!important}
+.carrusel-item img,.carrusel-item video{user-select:none;-webkit-user-drag:none;pointer-events:none}

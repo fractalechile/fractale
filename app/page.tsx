@@ -1,6 +1,7 @@
 import EfectosPortada from "./efectos-portada";
 import Fractal360 from "./fractal-360";
 import PortadaCine from "./portada-cine";
+import CarruselTerreno from "./carrusel-terreno";
 
 const ATLETAS = [
   {
@@ -53,6 +54,11 @@ const FORCE = [
   ["Focus", "Concentración"],
   ["Training", "Pre-entreno"],
   ["Reset", "Recuperación"],
+];
+
+const GALERIA = [
+  "foto-1.jpg", "video-1.mp4", "foto-2.jpg", "foto-3.jpg", "video-2.mp4", "foto-4.jpg",
+  "foto-5.jpg", "video-3.mp4", "foto-6.jpg", "foto-7.jpg", "video-4.mp4",
 ];
 
 const MEDIA_MARATON = "https://www.mediamaratonrutadelosulmos.cl/";
@@ -262,10 +268,7 @@ export default function Portada() {
               <p className="lead muted">Competencias, eventos y trabajo con marcas.</p>
               <div className="ctas"><a className="more" href="https://instagram.com/fractale.cl" target="_blank" rel="noopener">Seguir a @fractale.cl</a></div>
             </div>
-            <div className="galeria una">
-              <a href="https://instagram.com/fractale.cl" target="_blank" rel="noopener" aria-label="Trail de 65 kilómetros, en Instagram">
-                <span className="ig">@fractale.cl</span><div className="foto f-trail"></div></a>
-            </div>
+            <CarruselTerreno items={GALERIA} />
           </div>
         </section>
 
