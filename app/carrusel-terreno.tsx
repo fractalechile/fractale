@@ -32,15 +32,17 @@ export default function CarruselTerreno({ items }: { items: string[] }) {
       id = requestAnimationFrame(paso);
     };
     const tocar = () => { pausa = performance.now() + 2500; };
-    const entrar = () => { encima = true; };
-    const salir = () => { encima = false; tocar(); };
+    // Solo el mouse pausa al pasar por encima; en celular el toque simula un "mouseenter"
+    // que nunca termina y dejaba la cinta detenida.
+    const entrar = (e: PointerEvent) => { if (e.pointerType === "mouse") encima = true; };
+    const salir = (e: PointerEvent) => { if (e.pointerType === "mouse") { encima = false; tocar(); } };
 
     el.addEventListener("pointerdown", tocar, { passive: true });
     el.addEventListener("touchstart", tocar, { passive: true });
     el.addEventListener("wheel", tocar, { passive: true });
     el.addEventListener("scroll", () => { if (performance.now() < pausa) tocar(); }, { passive: true });
-    el.addEventListener("mouseenter", entrar);
-    el.addEventListener("mouseleave", salir);
+    el.addEventListener("pointerenter", entrar);
+    el.addEventListener("pointerleave", salir);
 
     /* arrastrar con el mouse en escritorio */
     let arrastre: { x: number; s: number } | null = null;
