@@ -48,10 +48,10 @@ const MARCAS = [
 ];
 
 const FORCE = [
-  ["Essentials", "Multivitamínico"],
-  ["Base", "Creatina monohidrato"],
-  ["Focus", "Nootrópico"],
-  ["Training", "Pre-workout"],
+  ["Essentials", "Vitaminas"],
+  ["Base", "Creatina"],
+  ["Focus", "Concentración"],
+  ["Training", "Pre-entreno"],
   ["Reset", "Recuperación"],
 ];
 
@@ -121,13 +121,20 @@ export default function Portada() {
             <div className="manifest">
               <p className="eyebrow">El paradigma que rompemos</p>
               <h2 className="headline">El alto rendimiento ya no pide permiso en la capital.</h2>
-              <p>El sur de Chile tiene <b>las condiciones geográficas, climáticas y humanas más exigentes del territorio</b>:
-                una cuna natural de resiliencia, disciplina y potencial deportivo de clase mundial.
-                Aun así, el alto rendimiento estuvo condicionado a la centralización.</p>
-              <p>En FRACTALE demostramos que <b>no es necesario migrar a Santiago para llegar a la élite.</b>
-                Profesionalizamos la carrera del deportista y ofrecemos a las marcas
-                <b> una entrada auténtica, estructurada y rentable</b> a un mercado con una identidad
-                y una fidelidad incomparables.</p>
+              <div className="cambio" role="list">
+                <div className="cambio-cab" aria-hidden="true"><span>Antes</span><span></span><span>Con FRACTALE</span></div>
+                {[
+                  ["Emigrar a Santiago", "Crecer desde el sur"],
+                  ["Talento sin respaldo", "Carrera gestionada"],
+                  ["Marcas lejos del público", "Un mercado fiel"],
+                ].map(([antes, ahora]) => (
+                  <div className="cambio-fila" role="listitem" key={antes}>
+                    <p className="cambio-antes">{antes}</p>
+                    <span className="cambio-flecha" aria-hidden="true">→</span>
+                    <p className="cambio-ahora"><span className="cambio-grad">{ahora}</span></p>
+                  </div>
+                ))}
+              </div>
               <p className="quote">El éxito está en el sur.</p>
             </div>
           </div>
@@ -139,7 +146,7 @@ export default function Portada() {
             <div className="srv-cabeza">
               <p className="eyebrow mini">Acompañamiento integral 360°</p>
               <h2 className="headline">Descentralizando la élite.</h2>
-              <p className="lead">Liberamos al atleta de la carga operativa, administrativa y médica para que ponga toda su energía en rendir y ganar.</p>
+              <p className="lead">FRACTALE se encarga de toda la gestión operativa, administrativa y médica, para que el atleta solo se preocupe de rendir y ganar.</p>
             </div>
             <Fractal360 />
 
@@ -292,15 +299,10 @@ export default function Portada() {
       </main>
 
       <footer>
-        <div className="wrap">
-          <p className="nota">FRACTALE Sport Management trabaja con atletas, eventos y marcas desde Puerto Montt, Región de Los Lagos, Chile. Escríbenos a <a href="mailto:contacto@fractalechile.com" style={{ color: "var(--link)" }}>contacto@fractalechile.com</a>.</p>
-          <div className="legal">
-            <span>Copyright © {new Date().getFullYear()} FRACTALE Sport Management. Todos los derechos reservados.</span>
-            <span className="spacer"></span>
-            <span><a href="/terminos">Términos y privacidad</a></span>
-            <span className="spacer"></span>
-            <span>Puerto Montt · Chile</span>
-          </div>
+        <div className="wrap pie-unico">
+          <span>© {new Date().getFullYear()} FRACTALE · Puerto Montt, Chile</span>
+          <a href="mailto:contacto@fractalechile.com">contacto@fractalechile.com</a>
+          <a href="/terminos">Términos y privacidad</a>
         </div>
       </footer>
     </>

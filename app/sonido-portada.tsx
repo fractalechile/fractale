@@ -1,20 +1,38 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-/** Activa o silencia la música del video de portada. */
+/** Reproduce una vez el video con sonido desde el inicio y luego vuelve a silencio. */
 export default function SonidoPortada() {
   const [activo, setActivo] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const silenciar = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true;
+    v.loop = true;
+    v.play().catch(() => {});
+    setActivo(false);
+  };
+
+  useEffect(() => {
+    const v = document.querySelector<HTMLVideoElement>(".cine-video");
+    videoRef.current = v;
+    if (!v) return;
+    v.addEventListener("ended", silenciar);
+    return () => v.removeEventListener("ended", silenciar);
+  }, []);
 
   const alternar = () => {
-    const video = document.querySelector<HTMLVideoElement>(".cine-video");
-    if (!video) return;
-    const nuevo = !activo;
-    video.muted = !nuevo;
-    if (nuevo) {
-      video.volume = 0.8;
-      video.play().catch(() => {});
-    }
-    setActivo(nuevo);
+    const v = videoRef.current;
+    if (!v) return;
+    if (activo) return silenciar();
+    v.loop = false;
+    v.currentTime = 0;
+    v.muted = false;
+    v.volume = 0.8;
+    v.play().catch(() => {});
+    setActivo(true);
   };
 
   return (
