@@ -225,17 +225,15 @@ export default function Portada() {
           <div className="wide">
             <div className="evento-marcas">
               <img className="evento-fondo" src="/assets/fotos/puerto-montt.jpg" alt="Vista de Puerto Montt y su bahía" />
-              <div className="evento-grid">
+              <div className="evento-grid apilado">
+              <div className="evento-fila">{MARCAS.slice(0, 4).map((m) => <span key={m.nombre}><img src={m.logo} alt={m.nombre} /></span>)}</div>
               <div className="evento-txt">
                 <p className="k">Eventos y marcas</p>
                 <h2>Tu marca, donde el sur se encuentra.</h2>
                 <p>Llevamos a tu marca a los eventos deportivos del sur de Chile, con presencia real en cada punto de contacto: recuperación, race village, premiación y contenido.</p>
                 <a className="btn btn-white" href="#contacto">Sumar mi marca a un evento</a>
               </div>
-              <div className="evento-logos">
-                <p>Marcas que trabajan con nosotros</p>
-                <div>{MARCAS.map((m) => <span key={m.nombre}><img src={m.logo} alt={m.nombre} /></span>)}</div>
-              </div>
+              <div className="evento-fila">{MARCAS.slice(4, 8).map((m) => <span key={m.nombre}><img src={m.logo} alt={m.nombre} /></span>)}</div>
               </div>
             </div>
           </div>
