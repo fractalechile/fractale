@@ -1241,3 +1241,4 @@ body:has(.fondo-portada){background:transparent}
 .evento-fila span{display:flex;align-items:center;justify-content:center}
 .evento-fila img{max-width:78%!important}
 .evento-fila img[src*="oxxean"],.evento-fila img[src*="force-human"],.evento-fila img[src*="papa-johns"]{max-width:72%!important}
+.fondo-portada ~ main .bento.razones .b{text-align:center;align-items:center}

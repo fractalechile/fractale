@@ -146,6 +146,18 @@ export default function Portada() {
           </div>
         </section>
 
+        <section className="final" id="contacto">
+          <div className="wrap">
+            <p className="eyebrow mini">¿Cuál es tu meta?</p>
+            <h2 className="headline">El deporte en el sur cambió. Sea parte del liderazgo.</h2>
+            <p className="lead">Las marcas pioneras no esperan a que los mercados se consoliden: los construyen.</p>
+            <div className="ctas">
+              <a className="btn btn-blue" href="mailto:contacto@fractalechile.com?subject=Reuni%C3%B3n%20de%20alineaci%C3%B3n%20estrat%C3%A9gica">Escribir a FRACTALE</a>
+              <a className="btn btn-line" href="https://instagram.com/fractale.cl" target="_blank" rel="noopener">Seguir en Instagram</a>
+            </div>
+          </div>
+        </section>
+
         {/* acompañamiento 360 */}
         <section id="acompanamiento" className="gray">
           <div className="wide">
@@ -243,9 +255,8 @@ export default function Portada() {
         <section id="marcas" className="gray">
           <div className="wrap">
             <div className="center">
-              <p className="eyebrow mini">Propuesta de valor B2B</p>
               <h2 className="headline">¿Por qué aliarse con FRACTALE?</h2>
-              <p className="lead muted">Posicionamiento, reputación y retorno.</p>
+              <p className="lead muted">Posicionamiento, visibilidad y retorno.</p>
             </div>
             <div className="bento razones">
               <div className="b"><b>Territorio exclusivo</b><p>Su marca, unida al orgullo del sur.</p></div>
@@ -285,17 +296,6 @@ export default function Portada() {
         </div>
 
         {/* llamada final */}
-        <section className="final" id="contacto">
-          <div className="wrap">
-            <p className="eyebrow mini">¿Cuál es tu meta?</p>
-            <h2 className="headline">El deporte en el sur cambió. Sea parte del liderazgo.</h2>
-            <p className="lead">Las marcas pioneras no esperan a que los mercados se consoliden: los construyen.</p>
-            <div className="ctas">
-              <a className="btn btn-blue" href="mailto:contacto@fractalechile.com?subject=Reuni%C3%B3n%20de%20alineaci%C3%B3n%20estrat%C3%A9gica">Escribir a FRACTALE</a>
-              <a className="btn btn-line" href="https://instagram.com/fractale.cl" target="_blank" rel="noopener">Seguir en Instagram</a>
-            </div>
-          </div>
-        </section>
 
       </main>
 
