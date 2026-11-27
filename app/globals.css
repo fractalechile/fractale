@@ -1235,3 +1235,9 @@ body:has(.fondo-portada){background:transparent}
 .evento-fila img[src*="red-bull"],.evento-fila img[src*="papa-johns"]{max-height:clamp(28px,3.6vw,46px)!important}
 .evento-fila img[src*="fthaus"]{filter:brightness(0) invert(1) drop-shadow(0 2px 10px rgba(0,0,0,.6))}
 .evento-grid.apilado .evento-txt{background:rgba(10,11,12,.38)!important;-webkit-backdrop-filter:blur(18px) saturate(1.1);backdrop-filter:blur(18px) saturate(1.1);border:1px solid rgba(255,255,255,.08)}
+.evento-grid.apilado .evento-txt .btn{font-size:13px!important;padding:8px 16px!important;min-height:0}
+@media(max-width:734px){.evento-grid.apilado .evento-txt .btn{font-size:12.5px!important;padding:7px 14px!important}}
+/* logos de eventos: mismo ancho útil por celda, centrados */
+.evento-fila span{display:flex;align-items:center;justify-content:center}
+.evento-fila img{max-width:78%!important}
+.evento-fila img[src*="oxxean"],.evento-fila img[src*="force-human"],.evento-fila img[src*="papa-johns"]{max-width:72%!important}
