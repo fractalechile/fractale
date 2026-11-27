@@ -62,6 +62,8 @@ const GALERIA = [
 ];
 
 const MEDIA_MARATON = "https://www.mediamaratonrutadelosulmos.cl/";
+const ESCRIBIR = "mailto:contacto@fractalechile.com?subject=Contacto%20desde%20fractalechile.com&body=Hola%20FRACTALE%2C%20";
+const SUMAR_MARCA = "mailto:contacto@fractalechile.com?subject=Quiero%20sumar%20mi%20marca%20a%20un%20evento&body=Hola%20FRACTALE%2C%20me%20interesa%20sumar%20mi%20marca%20a%20un%20evento.";
 const AGENDAR = "mailto:contacto@fractalechile.com?subject=Inter%C3%A9s%20en%20agendar%20una%20reuni%C3%B3n&body=Hola%20FRACTALE%2C%20me%20interesa%20agendar%20una%20reuni%C3%B3n.";
 const WHATSAPP_FORCE = "https://wa.me/56958991823?text=hola%20fractale!%20quiero%20cotizar%20mis%20suplementos";
 
@@ -83,7 +85,7 @@ export default function Portada() {
             <a href="#eventos">Eventos</a>
             <a href="#marcas">Marcas</a>
             <a href="#terreno">En terreno</a>
-            <a href="#contacto">Contacto</a>
+            <a href={ESCRIBIR}>Contacto</a>
             <a href="/panel.html">Panel del equipo</a>
           </div>
           <button className="icon burger" id="burger" aria-label="Menú" aria-expanded="false">
@@ -99,7 +101,7 @@ export default function Portada() {
         <a href="#eventos">Eventos</a>
         <a href="#marcas">Marcas</a>
         <a href="#terreno">En terreno</a>
-        <a href="#contacto">Contacto</a>
+        <a href={ESCRIBIR}>Contacto</a>
         <hr />
         <a className="chico" href={MEDIA_MARATON}>Inscríbete a la Media Maratón de los Ulmos</a>
         <a className="chico" href="/panel.html">Panel del equipo</a>
@@ -152,7 +154,7 @@ export default function Portada() {
             <h2 className="headline">El deporte en el sur cambió. Sea parte del liderazgo.</h2>
             <p className="lead">Las marcas pioneras no esperan a que los mercados se consoliden: los construyen.</p>
             <div className="ctas">
-              <a className="btn btn-blue" href="mailto:contacto@fractalechile.com?subject=Reuni%C3%B3n%20de%20alineaci%C3%B3n%20estrat%C3%A9gica">Escribir a FRACTALE</a>
+              <a className="btn btn-blue" href={ESCRIBIR}>Escribir a FRACTALE</a>
               <a className="btn btn-line" href="https://instagram.com/fractale.cl" target="_blank" rel="noopener">Seguir en Instagram</a>
             </div>
           </div>
@@ -243,7 +245,7 @@ export default function Portada() {
                 <p className="k">Eventos y marcas</p>
                 <h2>Tu marca, donde el sur se encuentra.</h2>
                 <p>Llevamos a tu marca a los eventos deportivos del sur de Chile, con presencia real en cada punto de contacto: recuperación, race village, premiación y contenido.</p>
-                <a className="btn btn-white" href="#contacto">Sumar mi marca a un evento</a>
+                <a className="btn btn-white" href={SUMAR_MARCA}>Sumar mi marca a un evento</a>
               </div>
               <div className="evento-fila">{MARCAS.slice(4, 8).map((m) => <span key={m.nombre}><img src={m.logo} alt={m.nombre} /></span>)}</div>
               </div>
